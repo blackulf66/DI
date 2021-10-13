@@ -1,8 +1,4 @@
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-  
     <!-- Position Column -->
     <ng-container matColumnDef="position">
       <th mat-header-cell *matHeaderCellDef> No. </th>
@@ -35,8 +31,18 @@
       <th mat-header-cell *matHeaderCellDef> nota </th>
       <td mat-cell *matCellDef="let element"> {{element.notamedia}} </td>
     </ng-container>
-  
+    <ng-container matColumnDef="boton1">
+      <th mat-header-cell *matHeaderCellDef> </th>
+      <button mat-raised-button *matCellDef="let element"> {{element.boton1}}</button>
+    </ng-container>
+    <ng-container matColumnDef="boton2">
+      <th mat-header-cell *matHeaderCellDef> </th>
+      <button class="eliminar" mat-raised-button *matCellDef="let element"> {{element.boton2}}</button>
+    </ng-container>
+    
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
   </table>
   

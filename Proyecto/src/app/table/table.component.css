@@ -1,4 +1,12 @@
 table {
     width: 80%;
-    justify-content: center;
+    display: table;
+    margin: auto;
+  }
+  button{
+    color:yellow;
+    background-color: blueviolet;
+  }
+  .eliminar{
+    background-color: crimson;
   }
