@@ -29,10 +29,23 @@ const ELEMENTOS: elemento[] = [
 export class TableComponent implements OnInit {
   displayedColumns: string[] = ['position', 'nombre', 'apellidos', 'edad', 'curso', 'nota', 'acciones'];
   dataSource = ELEMENTOS;
+  acol: string[] = ['position' ,'nombre', 'apellidos', 'edad', 'curso', 'nota', 'acciones'];
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  columnavisible(event:any , columnavisible:string){
+    if (event.checked == false){
+      let index = this.displayedColumns.indexOf(columnavisible);
+    if(-1 !== index){
+      this.displayedColumns.splice(index, 1)
+    }
+    }else{
+      let indexII =this.acol.indexOf(columnavisible);
+      this.displayedColumns = [...this.displayedColumns.slice(0,indexII),this.acol[indexII],...this.displayedColumns.slice(indexII)]
+    }
+
+  }
 }

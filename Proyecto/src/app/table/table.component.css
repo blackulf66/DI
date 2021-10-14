@@ -12,3 +12,15 @@ table {
     background-color: rgba(97, 0, 252, 0.255);
   }
  
+li{
+  background-color: grey;
+  display: inline-table;
+  justify-content: center;
+  margin: auto;
+  
+}
+div {
+  display:flex;
+  margin:auto;
+
+}
