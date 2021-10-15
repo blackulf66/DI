@@ -13,14 +13,16 @@ table {
   }
  
 li{
-  background-color: grey;
   display: inline-table;
-  justify-content: center;
   margin: auto;
+ 
   
 }
-div {
-  display:flex;
-  margin:auto;
+ul {
+  display: flex;
+  justify-content: center;
+  margin-left:300px;
+  margin-right:300px;
+  
 
 }
