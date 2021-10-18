@@ -18,11 +18,10 @@ li{
  
   
 }
-ul {
-  display: flex;
-  justify-content: center;
-  margin-left:300px;
-  margin-right:300px;
-  
+
+div{
+display:flex;
+justify-content: center;
+background-color: rgba(130, 3, 194, 0.35);
 
 }
