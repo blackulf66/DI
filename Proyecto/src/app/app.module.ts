@@ -14,6 +14,9 @@ import {FormularioComponent } from './formulario/formulario.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
 import {FormsModule } from '@angular/forms';
+import { RegistroComponent } from './registro/registro.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -24,7 +27,8 @@ import {FormsModule } from '@angular/forms';
     AppComponent,
     CustomToolbarComponent,
     TableComponent,
-    FormularioComponent
+    FormularioComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,10 @@ import {FormsModule } from '@angular/forms';
     MatCheckboxModule,
     MatFormFieldModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

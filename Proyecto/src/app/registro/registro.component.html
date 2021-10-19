@@ -1,0 +1,31 @@
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Registrarse</mat-card-title>
+      </mat-card-header>
+      <form (ngSubmit)="onlogin()" #form='ngForm'>
+
+        <div><label for="username">nombre de usuario</label></div>
+        
+       <input id="username" [(ngModel)]="registerDto.username" name="username">
+       
+        <label for="email">email</label>
+        <div class="example-container">
+          <mat-form-field appearance="fill">
+            <mat-label>Enter your email</mat-label>
+            <input id="email" [(ngModel)]="registerDto.email" name="email">
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </div>
+        
+        <div><label for="contrasenya">contraseña</label></div>
+       <input id="contrasenya" [(ngModel)]="registerDto.contrasenya" name="contrasenya">
+
+       <div><label for="contrasenya">contraseña</label></div>
+       <input id="contrasenya"  name="contrasenya">
+
+       <div><button mat-stroked-button color="accent"type="submit" class="btn-block"(click)="doRegister()">Sign-in</button></div>
+      </form>
+    </mat-card>
+  
+  </div>

@@ -1,0 +1,28 @@
+
+div{
+    margin-right: auto;
+    margin-left:auto;
+    }
+    .app-header {
+        justify-content: space-between;
+      display:flex;
+    }
+    .box {
+        position: relative;
+        top: 0;
+        opacity: 1;
+        max-width: 330px;
+    }
+    div{
+      display:flex;
+      margin-right: auto;
+      margin-left: auto;
+      margin: auto;
+      justify-content: center;
+    }
+    .box{
+        background-color: lightgray;
+    }
+    button{
+        background-color: purple;
+    }
