@@ -1,13 +1,13 @@
 export class AuthregisterDto {
     username : string
     email: string;
-    contrasenya: string;
+    password: string;
     code: string
 
     constructor() {
         this.username='';
         this.email = '';
-        this.contrasenya = '';
+        this.password = '';
         this.code='UDEMYANDROID';
     }
 }

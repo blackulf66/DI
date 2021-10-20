@@ -16,6 +16,7 @@ import {MatCardModule} from '@angular/material/card';
 import {FormsModule } from '@angular/forms';
 import { RegistroComponent } from './registro/registro.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MaterialImportsModule } from './modules/material-imports.module';
 
 
 
@@ -33,18 +34,9 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    MatSlideToggleModule,
-    MatTableModule,
-    MatCheckboxModule,
-    MatFormFieldModule,
-    MatCardModule,
+    MaterialImportsModule,
     FormsModule,
     HttpClientModule,
-    
-   
   ],
   providers: [],
   bootstrap: [AppComponent]
