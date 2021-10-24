@@ -1,0 +1,21 @@
+¿Cuantos pokemons quieres obtener?
+<button mat-raised-button color="primary" (click)="getPokemons(50)">50</button>
+<button mat-raised-button color="primary" (click)="getPokemons(100)">100</button>
+<button mat-raised-button color="primary" (click)="getPokemons(200)">200</button>
+  
+<mat-form-field appearance="fill">
+    <mat-label>Elementos por página</mat-label>
+    <mat-select [(ngModel)]="pokemonName" (SelectedChange)="getPokemonName()">
+        <mat-option *ngFor="let pokemon of pokemonList" [value]="pokemon.name">{{pokemon.name}}</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<div>
+<mat-card *ngFor="let pokemon of pokemonList; let i = index">
+    <mat-card-title-group>
+      <mat-card-title>{{pokemon.name}}</mat-card-title>
+      <mat-card-subtitle>{{i+1}}</mat-card-subtitle>
+      <img [src]="getPokemonPhotoUrl(pokemon.url)" width="300px" />
+    </mat-card-title-group>
+  </mat-card>
+</div>
