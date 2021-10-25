@@ -1,0 +1,6 @@
+<mat-form-field appearance="fill">
+    <mat-label>Elementos por página</mat-label>
+    <mat-select [(ngModel)]="movie" (SelectedChange)="getMovieList()">
+        <mat-option *ngFor="let movie of movieList" [value]="movie.name">{{movie.name}}</mat-option>
+    </mat-select>
+</mat-form-field>

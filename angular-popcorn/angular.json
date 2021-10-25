@@ -1,12 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "4d57fd3c-5519-437d-be28-7b41aa15462c"
+    "analytics": "076fa349-dcb1-4b7a-9390-e3cb94f28b53"
   },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pokeDam": {
+    "angular-popcorn": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/pokeDam",
+            "outputPath": "dist/angular-popcorn",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "pokeDam:build:production"
+              "browserTarget": "angular-popcorn:build:production"
             },
             "development": {
-              "browserTarget": "pokeDam:build:development"
+              "browserTarget": "angular-popcorn:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pokeDam:build"
+            "browserTarget": "angular-popcorn:build"
           }
         },
         "test": {
@@ -107,5 +107,5 @@
       }
     }
   },
-  "defaultProject": "pokeDam"
+  "defaultProject": "angular-popcorn"
 }

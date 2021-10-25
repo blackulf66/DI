@@ -36,6 +36,7 @@ export class PokemonListComponent implements OnInit {
       this.pokemonName = result.name;
     })
     }
+
     getPokemonPhotoUrl(url: string): string {
       let splitArray = url.split("/");
       return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${splitArray[6]}.png`;
