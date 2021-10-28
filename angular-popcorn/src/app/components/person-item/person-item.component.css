@@ -2,3 +2,15 @@ img {
     object-fit: cover;
     width: auto;
 }
+mat-card-content{
+    width: 200px;
+    height: 300px;
+    margin-left:auto;
+    margin-right: auto;
+    
+}
+mat-card{
+    margin-left:auto;
+    margin-right: auto;
+    margin: 20px;
+}
