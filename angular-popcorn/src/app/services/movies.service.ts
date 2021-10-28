@@ -15,6 +15,6 @@ export class MoviesService {
   constructor(private http: HttpClient) { }
 
   getPopularMovies(): Observable<MoviesPopularResponse> {
-    return this.http.get<MoviesPopularResponse>(`${movieUrl}/popular?api_key=${environment.apiKey}&language=${environment.defaultLang}`);
+    return this.http.get<MoviesPopularResponse>(`${movieUrl}/popular?api_key=${environment.apiKey}&language=${environment}`);
   }
 }

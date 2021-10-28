@@ -16,6 +16,6 @@ export class PersonService {
   constructor(private http: HttpClient) { }
 
   getPopularPerson(): Observable<PersonPopularResponse> {
-    return this.http.get<PersonPopularResponse>(`${PersonUrl}/popular?api_key=${environment.apiKey}&language=${environment.defaultLang}`);
+    return this.http.get<PersonPopularResponse>(`${PersonUrl}/popular?api_key=${environment.apiKey}&language=${environment}`);
   }
 }
