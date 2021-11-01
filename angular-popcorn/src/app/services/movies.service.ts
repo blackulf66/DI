@@ -20,7 +20,7 @@ export class MoviesService {
     return this.http.get<MovieResponse>(`${environment.apiBaseUrl}/movie/${id}?api_key=${environment.apiKey}`)
   }
   getPopularMovies(): Observable<MoviesPopularResponse> {
-    return this.http.get<MoviesPopularResponse>(`${movieUrl}/popular?api_key=${environment.apiKey}&language=${environment.defaultLang}`);
+    return this.http.get<MoviesPopularResponse>(`${movieUrl}/popular?api_key=${environment.apiKey}&language=${environment}`);
   }
   getMovie():Observable<MovieResponse>{
     return this.http.get<MovieResponse>(`${environment.apiBaseUrl}/movie/?api_key=${environment.apiKey}`)
