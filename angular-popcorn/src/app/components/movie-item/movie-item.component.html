@@ -4,4 +4,5 @@
         <img [src]="getMovieImageUrl(movieInput)" height="200px" width="100%" />
         <h3>{{movieInput.title}}</h3>
     </mat-card-content>
+    <button mat-raised-button (click)="openMovieDetailDialog()">Detalles</button>
 </mat-card>

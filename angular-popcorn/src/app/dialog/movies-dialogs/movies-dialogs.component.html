@@ -1,0 +1,8 @@
+<ng-container *ngIf="movie">
+    <h1 mat-dialog-title>Movie Detail</h1>
+    <div mat-dialog-content>
+        <p>Título: {{movie?.title}}</p>
+        <p>Fecha de Lanzamiento: {{movie?.release_date}}</p>
+        <p>Popularidad: {{movie?.popularity}}</p>
+    </div>
+</ng-container>

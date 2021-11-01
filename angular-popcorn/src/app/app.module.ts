@@ -18,7 +18,7 @@ import { SideMenuComponent } from './shared/side-menu/side-menu.component';
     MovieItemComponent,
     PersonPopularListComponent,
     PersonItemComponent,
-    SideMenuComponent
+    SideMenuComponent,
   ],
   imports: [
     BrowserModule,

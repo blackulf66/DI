@@ -5,7 +5,7 @@ div {
     flex-direction: row;
 }
 
-.movie-item {
+.person-item {
     display: flex;
     width: 250px;
     margin: 30px;
