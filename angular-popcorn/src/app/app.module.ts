@@ -10,6 +10,7 @@ import { MovieItemComponent } from './components/movie-item/movie-item.component
 import { PersonPopularListComponent } from './components/person-popular-list/person-popular-list.component';
 import { PersonItemComponent } from './components/person-item/person-item.component';
 import { SideMenuComponent } from './shared/side-menu/side-menu.component';
+import { PersonDialogsComponent } from './dialog/person-dialogs/person-dialogs.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SideMenuComponent } from './shared/side-menu/side-menu.component';
     PersonPopularListComponent,
     PersonItemComponent,
     SideMenuComponent,
+    PersonDialogsComponent,
   ],
   imports: [
     BrowserModule,

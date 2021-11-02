@@ -1,8 +1,9 @@
-<ng-container *ngIf="movie">
-    <h1 mat-dialog-title>Movie Detail</h1>
+ <h1 mat-dialog-title>detalle pelicula</h1>
     <div mat-dialog-content>
         <p>Título: {{movie?.title}}</p>
         <p>Fecha de Lanzamiento: {{movie?.release_date}}</p>
+        <p>voto: {{movie?.vote_average}}</p>
         <p>Popularidad: {{movie?.popularity}}</p>
+        <p *ngFor="let genre of genrelist">generos:{{movie?.genres}}</p>
     </div>
-</ng-container>
+    

@@ -2,12 +2,12 @@
 
 export interface PeopleResponse {
     page:          number;
-    results:       People[];
+    results:       PeopleI[];
     total_pages:   number;
     total_results: number;
 }
 
-export interface People {
+export interface PeopleI {
     adult:                boolean;
     gender:               number;
     id:                   number;
