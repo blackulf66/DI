@@ -8,7 +8,6 @@ import { PersonPopularResponse } from '../models/interfaces/person-popular.inter
 
 const PersonUrl = `${environment.apiBaseUrl}/person`;
 
-
 @Injectable({
   providedIn: 'root'
 })
