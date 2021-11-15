@@ -1,0 +1,14 @@
+
+<div fxFlexFill fxLayout="row" fxLayoutAlign="space-evenly none">
+    <!-- Listado de planetas -->
+    <div fxFlex="33" fxLayout="row" fxLayoutAlign="space-arround center" style="background-color: purple;" fxLayout="row wrap" fxLayoutAlign="space-arround center" fxLayoutGap="20px grid">
+        <app-planet-item *ngFor="let p of planetList" [planetInput]="p" (planetSelectedEvent)="onPlanetSelected($event)" (planetDeletedEvent)="updateList($event)"></app-planet-item>
+    </div>
+
+    <!-- Detalle del planeta seleccionado -->
+    <div fxFlex="33" style="background-color: green;">
+        <app-planet-selected [planet]="planetSelected"></app-planet-selected>
+    </div>
+    <!-- h-->
+    <div fxFlex="33" style="background-color: red;"> <p>h</p></div>
+</div>
