@@ -1,4 +1,5 @@
-
-<div >
-<app-movie-item class="movie-item" *ngFor="let movie of popularMovies" [movieInput]="movie"></app-movie-item>
+<div fxFlexFill fxLayout="row" fxLayoutAlign="space-evenly none">
+    <div fxFlex="33" fxLayout="row" fxLayoutAlign="space-arround left" fxLayout="row wrap" fxLayoutAlign="space-arround center" fxLayoutGap="80px grid">
+        <app-movie-item class="movie-item" *ngFor="let movie of popularMovies" [movieInput]="movie"></app-movie-item>
+    </div>
 </div>
