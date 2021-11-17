@@ -3,13 +3,13 @@
     <mat-card-content>
         <circle-progress class="circle"
         [percent]="(movieInput.vote_average)*10"
-        [radius]="25"
+        [radius]="20"
         [showSubtitle]="false"></circle-progress>
-       
         <img [src]="getMovieImageUrl(movieInput)" height="200px" width="100%" />
-        <h3>{{movieInput.title}}</h3>
+        <h3 class="overview">{{movieInput.title}}</h3>
+        <p class="overview">{{movieInput.overview}}</p>
        
-        <mat-icon>favorite</mat-icon>
-        <mat-icon>list</mat-icon>
+        <button mat-button><mat-icon>favorite</mat-icon></button>
+        <button mat-button><mat-icon>list</mat-icon></button>
     </mat-card-content>
 </mat-card>

@@ -26,12 +26,13 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     NgCircleProgressModule.forRoot({
   
       radius: 100,
-      outerStrokeWidth: 10,
-      innerStrokeWidth: 5,
+      outerStrokeWidth: 5,
+      innerStrokeWidth: 2,
       outerStrokeColor: "#8F0091",
       innerStrokeColor: "#CE00D1",
       animationDuration: 300,
-      titleColor: "#FFFFFF"
+      titleColor: "#FFFFFF",
+      backgroundColor: "#999999"
     })
 
   ],
