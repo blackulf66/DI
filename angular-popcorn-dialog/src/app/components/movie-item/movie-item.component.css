@@ -1,0 +1,35 @@
+mat-card{
+    background-color:rgb(43, 5, 48);   
+    color:white;
+    box-shadow: floralwhite;
+
+   }
+.imagen {
+    width: 100%;
+    overflow: hidden;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.titulo {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    display: inline-block; 
+
+}
+.rate {
+    position: absolute;
+}
+.imagen:hover {
+    cursor: pointer;
+}
+.imagen img {
+    object-fit: cover;
+    transition: transform 1s ease;
+}
+.imagen:hover img {
+    transform: scale(1.1);
+    transition: transform 1s ease;
+}
