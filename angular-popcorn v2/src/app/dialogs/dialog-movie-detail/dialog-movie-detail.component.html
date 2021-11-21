@@ -1,0 +1,11 @@
+<ng-container *ngIf="movie">
+    <h1 mat-dialog-title>{{movie?.title}}</h1>
+    <div mat-dialog-content>
+        <div fxLayout="column" fxLayoutAlign="center center">
+            <img [src]="getMovieImage(movie)" width="250px">
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-evenly center">
+            {{movie?.overview}}
+        </div>
+    </div>
+</ng-container>

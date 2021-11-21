@@ -1,0 +1,36 @@
+
+.movie-card {
+    min-height: 300px;
+    background-color: rgb(63, 0, 78);
+    color:rgb(233, 187, 233);
+}
+
+.movie-rate {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.movie-title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 100%;
+    display: inline-block; 
+    margin: 0;
+}
+.movie-image {
+    width: 100%;
+    overflow: hidden;
+    height: 200px;
+}
+
+.movie-image img {
+    object-fit: cover;
+    transition: transform 1s ease;
+}
+
+.movie-image:hover img {
+    transform: scale(1.1); 
+    transition: transform 0.5s ease;
+}
