@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogLoginComponent } from 'src/app/dialogs/dialog-login/dialog-login.component';
 import { DialogMovieDetailComponent } from 'src/app/dialogs/dialog-movie-detail/dialog-movie-detail.component';
 import { DialogPlaylistComponent } from 'src/app/dialogs/dialog-playlist/dialog-playlist.component';
+import { MovieFavoriteDialogComponent } from 'src/app/dialogs/movie-favorite-dialog/movie-favorite-dialog.component';
 import { Movie } from 'src/app/models/interfaces/movies-popular.interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { environment } from 'src/environments/environment';
@@ -41,11 +42,29 @@ export class MovieItemComponent implements OnInit {
       data: { movieName: this.movieInput?.id }
     });
   }
+  openDialogFavorite(){
+    this.dialog.open(MovieFavoriteDialogComponent, {
+      width: "500px",
+      height: "250px",
+      data:{
+        movieId: this.movieInput.id
+      }
+    })
+  }
 
-  addFavorite() {
-    if(this.authService.isLoggedIn()) {
-    } else {
-      this;
+  openLoginDialog(){
+    this.dialog.open(DialogLoginComponent, {
+      width: "300px"
+      
+    })
+  }
+
+  addFavorite(){
+    if(this.authService.isLoggedIn()){
+      this.openDialogFavorite();
+    }else{
+      this.openLoginDialog();
+
     }
   }
 

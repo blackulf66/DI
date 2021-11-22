@@ -1,0 +1,16 @@
+<a href="http://localhost:4200">Ir a peliculas</a>
+
+<div fxLayout="column" *ngFor="let favorite of favoriteList">
+    <div>
+        <mat-card>
+            <mat-card-content>
+                <div class="movie-image"> 
+                <img [src]="getMovieImageUrl(favorite)" width="20%" />
+                </div>
+                <h3 class="ellipsis">{{favorite.title}}</h3>
+        
+                <div class="ellipsis">{{favorite.overview}}</div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

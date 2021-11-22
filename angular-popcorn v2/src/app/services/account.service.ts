@@ -11,7 +11,7 @@ export class ListaResponseService {
 
   constructor(private http: HttpClient) { }
 
-  getLists(): Observable<ListaResponse>{
-    return this.http.get<ListaResponse>(`https://api.themoviedb.org/3/account/{account_id}/lists?${environment.apiKey}&language=${environment.defaultLang}&page=1&session_id=e2270217b9e91ae6a23a8be9171617abc5770798`)
+  getCreatedList(): Observable<ListaResponse>{
+    return this.http.get<ListaResponse>(`${environment.apiBaseUrl}/account/null/lists?api_key=${environment.apiKey}&language=${environment.defaultLang}&page=1&session_id=${localStorage.getItem('session_id')}`)
   }
 }

@@ -14,6 +14,10 @@ import { SessionComponent } from './shared/session/session.component';
 import { DialogMovieDetailComponent } from './dialogs/dialog-movie-detail/dialog-movie-detail.component';
 import { DialogPlaylistComponent } from './dialogs/dialog-playlist/dialog-playlist.component';
 
+import { FormsModule } from '@angular/forms';
+import { FavoritesMoviesComponent } from './components/favorites-movies/favorites-movies.component';
+import { MovieFavoriteDialogComponent } from './dialogs/movie-favorite-dialog/movie-favorite-dialog.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +26,11 @@ import { DialogPlaylistComponent } from './dialogs/dialog-playlist/dialog-playli
     DialogMovieDetailComponent,
     SessionComponent,
     DialogLoginComponent,
-    DialogPlaylistComponent
+    DialogPlaylistComponent,
+    FavoritesMoviesComponent,
+    MovieFavoriteDialogComponent,
+
+ 
   ],
   imports: [
     BrowserModule,
@@ -31,6 +39,7 @@ import { DialogPlaylistComponent } from './dialogs/dialog-playlist/dialog-playli
     MaterialImportsModule,
     HttpClientModule,
     FlexLayoutModule,
+    FormsModule,
     NgCircleProgressModule.forRoot({
       "radius": 25,
       "outerStrokeGradient": true,

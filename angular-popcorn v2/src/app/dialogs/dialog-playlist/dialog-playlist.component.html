@@ -1,13 +1,33 @@
+<h2>Añadir {{movie?.title}} a una lista ?</h2>
 
-
-<h1 mat-dialog-title>Hi</h1>
-<div mat-dialog-content>
+<h3>Añadir a una lista existente</h3>
 <mat-form-field appearance="fill">
-  <mat-select>
-    <mat-option *ngFor="let lista of list" [value]="lista.name">
-    </mat-option>
-  </mat-select>
+    <mat-label>Listas existentes</mat-label>
+    <mat-select name="lista" [(ngModel)]="listaId">
+      <mat-option *ngFor="let lista of bigLista" [value]="lista.id">
+        {{lista.name}}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
-</div>
-<div mat-dialog-actions>
-</div>
+  <br>
+  <button mat-raised-button class="boton" (click)="addPlaylist()">Añadir a la lista</button>
+
+  <hr>
+  <h3>O crear una nueva lista de reproducción</h3>
+  <form class="example-form">
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input [(ngModel)]="nombrelista" name="nombrelista" matInput placeholder="Nombre de la lista">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Descripción</mat-label>
+        <input [(ngModel)]="descripcion" name="descripcion" matInput placeholder="Descripcion de la lista">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Idioma</mat-label>
+        <input [(ngModel)]="idioma" name="idioma" matInput placeholder="Idioma de la lista">
+        </mat-form-field>
+        <br>
+    <button mat-raised-button class="boton" (click)="createPlaylist()">Crear lista</button>

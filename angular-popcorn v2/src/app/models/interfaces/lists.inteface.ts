@@ -1,3 +1,4 @@
+
 export interface ListaResponse {
     page:          number;
     results:       Lista[];
@@ -15,3 +16,4 @@ export interface Lista {
     name:           string;
     poster_path:    null;
 }
+
