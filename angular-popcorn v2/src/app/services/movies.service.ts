@@ -15,10 +15,11 @@ export class MoviesService {
   constructor(private http: HttpClient) { }
 
   getPopularMovies(): Observable<MoviesPopularResponse> {
-    return this.http.get<MoviesPopularResponse>(`${movieUrl}/popular?api_key=${environment.apiKey}&language=${environment.defaultLang}`);
+    return this.http.get<MoviesPopularResponse>(`${movieUrl}/popular?api_key=${environment.apiKey}`);
   }
 
   getMovie(id: number): Observable<Movie>{
-    return this.http.get<Movie>(`${movieUrl}/${id}?api_key=${environment.apiKey}&language=${environment.defaultLang}`);
+    return this.http.get<Movie>(`${movieUrl}/${id}?api_key=${environment.apiKey}`);
   }
+
 }

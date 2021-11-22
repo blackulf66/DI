@@ -1,0 +1,13 @@
+
+
+<h1 mat-dialog-title>Hi</h1>
+<div mat-dialog-content>
+<mat-form-field appearance="fill">
+  <mat-select>
+    <mat-option *ngFor="let lista of list" [value]="lista.name">
+    </mat-option>
+  </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+</div>

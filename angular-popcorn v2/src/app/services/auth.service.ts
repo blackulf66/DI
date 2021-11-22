@@ -40,4 +40,6 @@ export class AuthService {
   getSessionId(): Observable<SessionResponse> {
     return this.http.post<SessionResponse>(`https://api.themoviedb.org/3/authentication/session/new?api_key=${environment.apiKey}`, { request_token: this.getLocalRequestToken()});
 }
+
+
 }

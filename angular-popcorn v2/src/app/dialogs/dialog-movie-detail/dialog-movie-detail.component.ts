@@ -22,10 +22,8 @@ export class DialogMovieDetailComponent implements OnInit {
     private movieService: MoviesService) { }
 
   ngOnInit(): void {
-    console.log(this.data.movieName);
     this.movieService.getMovie(this.data.movieName).subscribe(movieResult =>{
       this.movie = movieResult;
-
     })
   }
   getMovieImage(movie: Movie){

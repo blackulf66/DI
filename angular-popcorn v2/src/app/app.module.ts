@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialImportsModule } from './modules/material-imports.module';
 import { MoviesPopularListComponent } from './components/movies-popular-list/movies-popular-list.component';
@@ -14,6 +12,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { DialogLoginComponent } from './dialogs/dialog-login/dialog-login.component';
 import { SessionComponent } from './shared/session/session.component';
 import { DialogMovieDetailComponent } from './dialogs/dialog-movie-detail/dialog-movie-detail.component';
+import { DialogPlaylistComponent } from './dialogs/dialog-playlist/dialog-playlist.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,9 @@ import { DialogMovieDetailComponent } from './dialogs/dialog-movie-detail/dialog
     MoviesPopularListComponent,
     MovieItemComponent,
     DialogMovieDetailComponent,
-    SessionComponent
+    SessionComponent,
+    DialogLoginComponent,
+    DialogPlaylistComponent
   ],
   imports: [
     BrowserModule,

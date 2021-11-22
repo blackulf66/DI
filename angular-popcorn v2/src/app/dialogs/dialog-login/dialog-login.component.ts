@@ -3,8 +3,6 @@ import { NavigationExtras, Router } from '@angular/router';
 import { Movie } from 'src/app/models/interfaces/movies-popular.interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { environment } from 'src/environments/environment';
-
-
 @Component({
   selector: 'app-dialog-login',
   templateUrl: './dialog-login.component.html',
@@ -24,9 +22,12 @@ export class DialogLoginComponent implements OnInit {
 
   doLogin() {
     this.authService.getRequestToken().subscribe(resp => {
+       const navigationExtras: NavigationExtras = {
+        queryParamsHandling: 'preserve',
+        preserveFragment: true
+      };
       this.authService.setLocalRequestToken(resp.request_token);
-      window.open(`https://www.themoviedb.org/authenticate/${resp.request_token}?redirect_to=http://localhost:4200/loginsuccess`,"_self");
-      
+      window.open(`https://www.themoviedb.org/authenticate/${resp.request_token}?redirect_to=http://localhost:4200/loginsuccess`);
     });
 
   }

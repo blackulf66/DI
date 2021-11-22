@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogLoginComponent } from 'src/app/dialogs/dialog-login/dialog-login.component';
 import { DialogMovieDetailComponent } from 'src/app/dialogs/dialog-movie-detail/dialog-movie-detail.component';
+import { DialogPlaylistComponent } from 'src/app/dialogs/dialog-playlist/dialog-playlist.component';
 import { Movie } from 'src/app/models/interfaces/movies-popular.interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { environment } from 'src/environments/environment';
@@ -14,7 +15,10 @@ import { environment } from 'src/environments/environment';
 export class MovieItemComponent implements OnInit {
   @Input() movieInput!: Movie;
 
-  constructor(private dialog: MatDialog, private authService: AuthService) { }
+  constructor(private dialog: MatDialog,
+     private authService: AuthService,
+    
+     ) { }
 
   ngOnInit(): void {
   }
@@ -30,12 +34,29 @@ export class MovieItemComponent implements OnInit {
     });
   }
 
+  openDialogplaylist() {
+    this.dialog.open(DialogPlaylistComponent, {
+      height: '600px',
+      width: '600px',
+      data: { movieName: this.movieInput?.id }
+    });
+  }
+
   addFavorite() {
     if(this.authService.isLoggedIn()) {
-      //TODO añadir el movieInput a favoritos
     } else {
-      this.openDialogMovieDetail();
+      this;
     }
   }
+
+  addToPlayList() {
+    if(this.authService.isLoggedIn()) {
+      this;  
+    } else {
+    
+    }
+  }
+
+
 
 }

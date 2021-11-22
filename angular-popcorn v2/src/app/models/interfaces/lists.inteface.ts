@@ -1,5 +1,4 @@
-
-export interface Account {
+export interface ListaResponse {
     page:          number;
     results:       Lista[];
     total_pages:   number;
