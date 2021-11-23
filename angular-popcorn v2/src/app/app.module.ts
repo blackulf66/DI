@@ -13,7 +13,6 @@ import { DialogLoginComponent } from './dialogs/dialog-login/dialog-login.compon
 import { SessionComponent } from './shared/session/session.component';
 import { DialogMovieDetailComponent } from './dialogs/dialog-movie-detail/dialog-movie-detail.component';
 import { DialogPlaylistComponent } from './dialogs/dialog-playlist/dialog-playlist.component';
-
 import { FormsModule } from '@angular/forms';
 import { FavoritesMoviesComponent } from './components/favorites-movies/favorites-movies.component';
 import { MovieFavoriteDialogComponent } from './dialogs/movie-favorite-dialog/movie-favorite-dialog.component';

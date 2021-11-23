@@ -6,7 +6,7 @@ import { SessionComponent } from './shared/session/session.component';
 
 const routes: Routes = [
   {path: '', component: MoviesPopularListComponent},
-  { path: 'loginsuccess',component: SessionComponent},
+  {path: 'loginsuccess',component: SessionComponent},
   {path: 'favorito', component:FavoritesMoviesComponent}
 ];
 

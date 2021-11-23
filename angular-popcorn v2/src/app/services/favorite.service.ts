@@ -23,6 +23,7 @@ export class FavoriteService {
     return this.http.post<ListaResponse>(`${environment.apiBaseUrl}/account/null/favorite?api_key=${environment.apiKey}&session_id=${localStorage.getItem('session_id')}`,
     favoriteDto)
   }
+
   getFavoriteList(): Observable <FavoriteListResponse>{
     return this.http.get<FavoriteListResponse>(`${environment.apiBaseUrl}/account/null/favorite/movies?api_key=${environment.apiKey}&language=${environment.defaultLang}&sort_by=created_at.asc&page=1&session_id=${localStorage.getItem('session_id')}`)
   }

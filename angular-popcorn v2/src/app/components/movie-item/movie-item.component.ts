@@ -39,7 +39,7 @@ export class MovieItemComponent implements OnInit {
     this.dialog.open(DialogPlaylistComponent, {
       height: '600px',
       width: '600px',
-      data: { movieName: this.movieInput?.id }
+      data: { movieDetail: this.movieInput }
     });
   }
   openDialogFavorite(){

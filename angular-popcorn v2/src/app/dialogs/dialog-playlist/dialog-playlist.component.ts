@@ -9,7 +9,7 @@ import { MoviesService } from 'src/app/services/movies.service';
 
 
 export interface movieDetailDialogData{
-  movieId: number;
+  movieDetail: Movie;
 }
 
 @Component({
@@ -22,9 +22,9 @@ export class DialogPlaylistComponent implements OnInit {
   movie!: Movie;
   bigLista!: Lista[];
   listaId!: number;
-  descripcion!: string
-  idioma!: string;
-  nombrelista!:string
+  descripcion!: string;
+  idioma!: "es";
+  nombrelista!:string;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: movieDetailDialogData, 
@@ -36,16 +36,15 @@ export class DialogPlaylistComponent implements OnInit {
   
 
   ngOnInit(): void {
-      console.log(this.data.movieId)
+    this.movie = this.data.movieDetail;
     this.listaResponseService.getCreatedList().subscribe(l => {
-      this.bigLista = l.results
-      console.log(this.bigLista)
+      this.bigLista = l.results;
     })
   }
 
  
   createPlaylist(){
-    this.listaService.createPlaylist(this.descripcion,this.nombrelista,this.idioma).subscribe(lista => {
+   return this.listaService.createPlaylist(this.nombrelista,this.descripcion,this.idioma).subscribe(lista => {
       this.listaResponseService.getCreatedList().subscribe(l => {
         this.bigLista = l.results;
         this.listaId = lista.list_id
@@ -55,7 +54,7 @@ export class DialogPlaylistComponent implements OnInit {
     )
   }
   addPlaylist(){
-    this.listaService.addToPlaylist(this.listaId, this.data.movieId).subscribe()
+    return this.listaService.addToPlaylist(this.listaId, this.movie.id).subscribe();
   }
   
 
