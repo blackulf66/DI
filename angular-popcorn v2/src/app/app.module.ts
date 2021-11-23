@@ -16,6 +16,7 @@ import { DialogPlaylistComponent } from './dialogs/dialog-playlist/dialog-playli
 import { FormsModule } from '@angular/forms';
 import { FavoritesMoviesComponent } from './components/favorites-movies/favorites-movies.component';
 import { MovieFavoriteDialogComponent } from './dialogs/movie-favorite-dialog/movie-favorite-dialog.component';
+import { SideMenuComponent } from './shared/side-menu/side-menu.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { MovieFavoriteDialogComponent } from './dialogs/movie-favorite-dialog/mo
     DialogPlaylistComponent,
     FavoritesMoviesComponent,
     MovieFavoriteDialogComponent,
+    SideMenuComponent,
 
  
   ],

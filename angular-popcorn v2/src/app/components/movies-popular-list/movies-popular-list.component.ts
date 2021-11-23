@@ -30,7 +30,6 @@ export class MoviesPopularListComponent implements OnInit {
     })
   }
   filterGenre(sGeneroid: number[]){
-
       this.popularMovies = this.allPopularMovies;
       if(this.genreid.length > 0){
         let r :Movie[] = this.popularMovies.filter(movies => movies.genre_ids.some(filtro => sGeneroid.includes(filtro)));

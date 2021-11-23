@@ -7,8 +7,19 @@
 
 }
 
-.filtro{
+.todo{
     background-color: rgb(24, 27, 24);
+}
+
+button{
+    color: white;
+    background-color: rgb(63, 0, 78);
+}
+
+.filtro{
+    color:rgb(200, 158, 235);
+    
+    
 }
 .movie-item {
     min-width: 200px;
