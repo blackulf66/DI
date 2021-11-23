@@ -1,6 +1,21 @@
 <div>
     <a href="http://localhost:4200/favorito">pincha aqui</a>
 </div>
+
+<mat-form-field appearance="fill">
+    <mat-label>Listas existentes</mat-label>
+    
+    <mat-select multiple name="genres" [(ngModel)]="genreid">
+      
+      <mat-option *ngFor="let genre of genreList" [value]="genre.id"> {{genre.name}} 
+      </mat-option>
+
+    </mat-select>
+ 
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="filterGenre(genreid)"><mat-icon>filter</mat-icon></button>
+  <button mat-raised-button color="primary" ><mat-icon>delete</mat-icon></button>
+
 <div class="container" fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutGap="20px grid" fxFlexFill fxLayoutAlign="start start">
 <app-movie-item fxFlex="13" class="movie-item" *ngFor="let movie of popularMovies" [movieInput]="movie"></app-movie-item>
 </div>
