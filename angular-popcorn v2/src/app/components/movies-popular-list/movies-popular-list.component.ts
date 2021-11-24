@@ -38,5 +38,9 @@ export class MoviesPopularListComponent implements OnInit {
         this.moviesService.getPopularMovies();
         }
       }
+
+    deleteFilter(){
+  
+    }
  
 }
