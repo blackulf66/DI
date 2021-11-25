@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { FavoritesMoviesComponent } from './components/favorites-movies/favorites-movies.component';
 import { MovieFavoriteDialogComponent } from './dialogs/movie-favorite-dialog/movie-favorite-dialog.component';
 import { SideMenuComponent } from './shared/side-menu/side-menu.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { SideMenuComponent } from './shared/side-menu/side-menu.component';
     HttpClientModule,
     FlexLayoutModule,
     FormsModule,
+    ReactiveFormsModule,
     NgCircleProgressModule.forRoot({
       "radius": 25,
       "outerStrokeGradient": true,

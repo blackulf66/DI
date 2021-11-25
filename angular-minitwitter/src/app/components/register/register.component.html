@@ -1,0 +1,14 @@
+<form [formGroup]="registerForm">
+
+    <label for="username">username: </label>
+    <input id="username" type="text" [(ngModel)]="registerDto.username" formControlName="username">
+  
+    <label for="email">email: </label>
+    <input id="email" type="text" [(ngModel)]="registerDto.email" formControlName="email">
+
+    <label for="password">password: </label>
+    <input id="password" type="text" [(ngModel)]="registerDto.password" formControlName="password">
+
+    <button mat-raised-button color="primary" (click)="doregister()">registrar</button>
+  
+  </form>
