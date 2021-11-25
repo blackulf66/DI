@@ -20,8 +20,6 @@ export class RegisterComponent implements OnInit {
   registerDto = new AuthRegisterDto();
   constructor(private authService: AuthService) { }
 
-  
-
   ngOnInit(): void {
   }
 

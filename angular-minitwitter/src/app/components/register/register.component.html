@@ -9,6 +9,24 @@
     <label for="password">password: </label>
     <input id="password" type="text" [(ngModel)]="registerDto.password" formControlName="password">
 
-    <button mat-raised-button color="primary" (click)="doregister()">registrar</button>
+         
+
+    <button mat-raised-button color="primary" (click)="doregister()"  required minlength="4" appForbiddenName="vicente calvo">registrar</button>
+
+
+    <div *ngIf="username.invalid && (username.dirty || username.touched)"
+    class="alert">
+
+        <div *ngIf="username.errors?.['required']">
+          Name is required.
+        </div>
+        <div *ngIf="username.errors?.['minlength']">
+          Name must be at least 4 characters long.
+        </div>
+        <div *ngIf="username.errors?.['forbiddenName']">
+          Name cannot be Bob.
+        </div>
+
+</div>
   
   </form>
