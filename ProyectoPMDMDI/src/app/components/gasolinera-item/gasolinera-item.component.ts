@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ListaEESSPrecio } from 'src/app/models/interfaces/gasolineras.interface';
 
 @Component({
   selector: 'app-gasolinera-item',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GasolineraItemComponent implements OnInit {
 
+  @Input() gasolineraInput!: ListaEESSPrecio;
+  
   constructor() { }
 
   ngOnInit(): void {

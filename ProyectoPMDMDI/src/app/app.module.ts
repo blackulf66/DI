@@ -7,17 +7,21 @@ import { GasolineraListComponent } from './components/gasolinera-list/gasolinera
 import { GasolineraItemComponent } from './components/gasolinera-item/gasolinera-item.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { MaterialImportsModule } from './modules/material-imports.module';
+import { DialogDetailsComponent } from './dialogs/dialog-details/dialog-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GasolineraListComponent,
-    GasolineraItemComponent
+    GasolineraItemComponent,
+    DialogDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialImportsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
