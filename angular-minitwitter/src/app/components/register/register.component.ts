@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
+  
   registerForm = new FormGroup({
     username: new FormControl(''),
     email: new FormControl(''),
@@ -19,8 +20,6 @@ export class RegisterComponent implements OnInit {
 
   registerDto = new AuthRegisterDto();
   constructor(private authService: AuthService) { }
-
-  
 
   ngOnInit(): void {
   }
