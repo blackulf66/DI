@@ -8,7 +8,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialImportsModule } from './modules/material-imports.module';
 import { DialogDetailsComponent } from './dialogs/dialog-details/dialog-details.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatSliderModule} from '@angular/material/slider';
+
 
 @NgModule({
   declarations: [
@@ -21,9 +23,14 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     MaterialImportsModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    MatSliderModule,
+ 
+    
+   
   ],
   providers: [],
   entryComponents: [DialogDetailsComponent],

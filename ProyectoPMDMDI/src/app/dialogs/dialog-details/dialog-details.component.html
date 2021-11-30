@@ -1,10 +1,12 @@
 <ng-container *ngIf="gasolinera">
     <h1 mat-dialog-title>{{gasolinera?.rotulo}}</h1>
-    <p>{{gasolinera.provincia}}</p>
-    <p>{{gasolinera.cP}}</p>
-    <p>{{gasolinera.direccion}}</p>
-    <p>{{gasolinera.precioGasoleoA}}</p>
-    <p>{{gasolinera.horario}}</p>
-    <p>{{gasolinera.municipio}}</p>
+    <p>provincia: {{gasolinera.provincia}}</p>
+    <p>codigo postal: {{gasolinera.cP}}</p>
+    <p>direccion: {{gasolinera.direccion}}</p>
+    <p>horario: {{gasolinera.horario}}</p>
+    <p>municipio :{{gasolinera.municipio}}</p>
+    <p>gasolina 98:{{gasolinera.precioGasolina98E5}}</p>
+    <p>gasoleo A :{{gasolinera.precioGasoleoA}}</p>
+    <p>gasolina 95{{gasolinera.precioGasolina95E5}}</p>
     <img src="https://img.bekia.es/celebrities/th/2000/2278.jpg">
 </ng-container>

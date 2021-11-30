@@ -1,4 +1,4 @@
-.movie-title {
+.title {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -6,8 +6,12 @@
     display: inline-block; 
     margin: 0;
 }
-.movie-card {
-    min-height: 300px;
+.card {
     background-color: rgb(63, 0, 78);
     color:rgb(233, 187, 233);
+}
+
+mat-card{
+    width: 350px;
+    height: 450px;
 }
