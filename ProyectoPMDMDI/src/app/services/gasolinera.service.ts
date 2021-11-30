@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GasolinerasListResponse, ListaEESSPrecio, ProvinciaListResponse } from '../models/interfaces/gasolineras.interface';
+import { GasolinerasListResponse, ListaEESSPrecio, Municipios, ProvinciaListResponse } from '../models/interfaces/gasolineras.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +11,11 @@ export class GasolineraService {
   constructor(private http: HttpClient) { }
 
   getGasolineras(): Observable<any> {
-    return this.http.get<any>('../assets/response.json');
+    return this.http.get<any>('https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/');
   }
 
   getgasolinera(id: number): Observable<ListaEESSPrecio>{
-    return this.http.get<ListaEESSPrecio>(`../assets/response.json`);
+    return this.http.get<ListaEESSPrecio>(`https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/`);
   }
 
   parseAnyToGasolineraListResponse(jsonString: string){
@@ -38,5 +38,9 @@ export class GasolineraService {
 
   getTodasProvincias():Observable<ProvinciaListResponse[]>{
     return this.http.get<ProvinciaListResponse[]>(`https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/Listados/Provincias/`)
+  }
+
+  getMunicipioDeProvincia(id : String):Observable<Municipios[]>{
+    return this.http.get<Municipios[]>(`https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/Listados/MunicipiosPorProvincia/$%7Bid%7D`)
   }
 }

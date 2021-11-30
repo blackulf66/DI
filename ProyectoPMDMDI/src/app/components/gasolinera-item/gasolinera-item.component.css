@@ -9,8 +9,8 @@
 .card {
     background-color: rgb(63, 0, 78);
     color:rgb(233, 187, 233);
+    
 }
-
 mat-card{
     width: 350px;
     height: 450px;

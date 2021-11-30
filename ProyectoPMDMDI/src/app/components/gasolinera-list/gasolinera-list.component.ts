@@ -1,6 +1,6 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
-import { ListaEESSPrecio, ProvinciaListResponse } from 'src/app/models/interfaces/gasolineras.interface';
+import { ListaEESSPrecio, Municipios, ProvinciaListResponse } from 'src/app/models/interfaces/gasolineras.interface';
 import { GasolineraService } from 'src/app/services/gasolinera.service';
 
 @Component({
@@ -16,8 +16,8 @@ export class GasolineraListComponent implements OnInit {
   precioMinimo!: number;
   tipocarburante!: ListaEESSPrecio;
   tipogasofa!: String;
-
-  
+  localidadesList!: Municipios[];
+  provinciaid!: string;
 
   constructor(private gasolineraService: GasolineraService) { }
 
@@ -26,10 +26,13 @@ export class GasolineraListComponent implements OnInit {
       this.gasolineraList = this.gasolineraService.parseAnyToGasolineraListResponse(JSON.stringify(g));
       this.allGasolineraList = this.gasolineraService.parseAnyToGasolineraListResponse(JSON.stringify(g));
   
-    })
+    });
     this.gasolineraService.getTodasProvincias().subscribe(p => {
       this.provinciaList = p;
      
+    });
+    this.gasolineraService.getMunicipioDeProvincia(this.provinciaid).subscribe(m =>{
+      this.localidadesList = m;
     })
   }
   filterprovincia(){
@@ -56,5 +59,8 @@ export class GasolineraListComponent implements OnInit {
   }
   removeAllFilter(){
     this.gasolineraList = this.allGasolineraList
+    }
+
+    filtrarporMunicipio(){
     }
 }

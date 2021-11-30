@@ -7,9 +7,10 @@ import { GasolineraItemComponent } from './components/gasolinera-item/gasolinera
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialImportsModule } from './modules/material-imports.module';
 import { DialogDetailsComponent } from './dialogs/dialog-details/dialog-details.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatSliderModule} from '@angular/material/slider';
+import { MatSliderModule} from '@angular/material/slider';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -28,9 +29,8 @@ import {MatSliderModule} from '@angular/material/slider';
     BrowserAnimationsModule,
     FormsModule,
     MatSliderModule,
+    FlexLayoutModule
  
-    
-   
   ],
   providers: [],
   entryComponents: [DialogDetailsComponent],
