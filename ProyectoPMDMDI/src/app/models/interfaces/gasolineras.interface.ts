@@ -20,3 +20,10 @@ export interface ListaEESSPrecio {
     idProvincia:                    string;
     idccaa:                         string;
 }
+
+export interface ProvinciaListResponse{
+    IDPovincia:String;
+    IDCCAA: string;
+    Provincia: String;
+    CCAA: String;
+}

@@ -1,3 +1,14 @@
-<mat-card-content>
-    <h1 class="tittle"></h1>
-</mat-card-content>
+<mat-card class="movie-card" >
+
+    <mat-card-content>
+        <h1 class="movie-title">{{gasolineraInput.rotulo}}</h1>
+        <p>{{gasolineraInput.provincia}}</p>
+        <p>{{gasolineraInput.cP}}</p>
+        <p>{{gasolineraInput.direccion}}</p>
+        <img src="https://img.bekia.es/celebrities/th/2000/2278.jpg">
+        
+    </mat-card-content>
+    <button (click)="openDialogGasolineraDetail()"> detalle</button>
+    
+
+</mat-card>

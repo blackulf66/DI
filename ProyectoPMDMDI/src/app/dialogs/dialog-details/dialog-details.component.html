@@ -1,1 +1,10 @@
-<p>dialog-details works!</p>
+<ng-container *ngIf="gasolinera">
+    <h1 mat-dialog-title>{{gasolinera?.rotulo}}</h1>
+    <p>{{gasolinera.provincia}}</p>
+    <p>{{gasolinera.cP}}</p>
+    <p>{{gasolinera.direccion}}</p>
+    <p>{{gasolinera.precioGasoleoA}}</p>
+    <p>{{gasolinera.horario}}</p>
+    <p>{{gasolinera.municipio}}</p>
+    <img src="https://img.bekia.es/celebrities/th/2000/2278.jpg">
+</ng-container>

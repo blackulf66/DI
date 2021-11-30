@@ -1,1 +1,15 @@
-<p>gasolinera-list works!</p>
+<mat-form-field appearance="fill">
+    <mat-label>filtrar por povincia</mat-label>
+    <mat-select multiple name="provincia" [(ngModel)]="provinciaName">
+        <mat-option *ngFor="let provincia of provinciaList" [value]="provincia.IDPovincia">
+            {{provincia.Provincia}}
+        </mat-option>
+    </mat-select> 
+</mat-form-field>
+
+<button mat-raised-button color="primary" (click)="filterprovincia()"><mat-icon>filter</mat-icon></button>
+<div class="container" fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutGap="20px grid" fxFlexFill fxLayoutAlign="start start">
+    <app-gasolinera-item fxFlex="13" *ngFor="let gasol of gasolineraList" [gasolineraInput]="gasol"></app-gasolinera-item>
+</div>
+
+

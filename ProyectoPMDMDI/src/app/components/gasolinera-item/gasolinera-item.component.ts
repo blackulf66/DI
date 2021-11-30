@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogDetailsComponent } from 'src/app/dialogs/dialog-details/dialog-details.component';
 import { ListaEESSPrecio } from 'src/app/models/interfaces/gasolineras.interface';
 
 @Component({
@@ -10,9 +12,18 @@ export class GasolineraItemComponent implements OnInit {
 
   @Input() gasolineraInput!: ListaEESSPrecio;
   
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
+  
+  openDialogGasolineraDetail() {
+    this.dialog.open(DialogDetailsComponent,{
+      height: 'auto',
+      width: 'auto',
+      data:{gasolinera:this.gasolineraInput}
+    });
+  }
+
 
 }
