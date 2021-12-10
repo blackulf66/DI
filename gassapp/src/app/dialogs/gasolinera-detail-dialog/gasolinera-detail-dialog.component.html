@@ -1,0 +1,13 @@
+
+<ng-container *ngIf="gasolinera">
+    <h1 mat-dialog-title>{{gasolinera?.rotulo}}</h1>
+    <p>provincia: {{gasolinera.provincia}}</p>
+    <p>codigo postal: {{gasolinera.cP}}</p>
+    <p>direccion: {{gasolinera.direccion}}</p>
+    <p>horario: {{gasolinera.horario}}</p>
+    <p>municipio : {{gasolinera.municipio}}</p>
+    <p>gasolina 98:{{gasolinera.precioGasolina98E5}}</p>
+    <p>gasoleo A : {{gasolinera.precioGasoleoA}}</p>
+    <p>gasolina 95: {{gasolinera.precioGasolina95E5}}</p>
+    <img src="https://easygasgroup.com/wp-content/uploads/2020/02/A_opt.jpg" width="200px">
+</ng-container>

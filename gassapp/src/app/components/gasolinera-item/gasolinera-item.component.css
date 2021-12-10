@@ -1,0 +1,19 @@
+mat-card{
+    align-items: center;
+    width: 350px;
+    height: 450px;
+}
+
+.title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 100%;
+    display: inline-block; 
+    margin: 0;
+}
+.card {
+    background-color: rgb(63, 0, 78);
+    color:rgb(233, 187, 233);
+    
+}

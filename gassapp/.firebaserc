@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "gasapp-6fbb4": {
+      "hosting": {
+        "GasApp-Alejandro-Martin": [
+          "gasapp-6fbb4"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "gasapp-6fbb4"
+  }
+}

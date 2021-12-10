@@ -1,0 +1,19 @@
+<h1>Lista de gasolineras favoritas</h1>
+<a [routerLink]="['/']" routerLinkActive="router-link-active" ><button mat-raised-button color="primary">Volver a la lista de gasolineras</button></a>
+<ul>
+        <div fxLayout="column" *ngFor="let gasolinerafav of gasolineraFavList | async">
+            <mat-card class="card">
+                <mat-card-content>
+                    <h1 class="title">{{gasolinerafav.rotulo}}</h1>
+                    <p>{{gasolinerafav.provincia}}</p>
+                    <p>{{gasolinerafav.direccion}}</p>
+                    <img src="https://easygasgroup.com/wp-content/uploads/2020/02/A_opt.jpg" width="200px">
+                </mat-card-content>
+                <button mat-raised-button color="accent" (click)="deleteFavorite(gasolinerafav)">Borrar Favorito</button>
+                </mat-card>
+             </div>
+        
+        
+        
+        
+</ul>
