@@ -31,7 +31,6 @@ export class GasolineraItemComponent implements OnInit {
       }
     })
   }
-
   getGoogleMaps(direccion:String){
     this.gasolineraService.getGoogleMaps(direccion.replace(' ', '+'));
   }

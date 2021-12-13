@@ -91,7 +91,7 @@ export class GasolineraListComponent implements OnInit {
   getPhotoUrl(){
     return localStorage.getItem('photoUrl');
   }
-  getName(){
-    return localStorage.getItem('name');
+  getEmail(){
+    return localStorage.getItem('email');
   }
 }
