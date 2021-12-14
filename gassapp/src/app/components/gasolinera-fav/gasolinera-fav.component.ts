@@ -5,6 +5,8 @@ import { GasolineraFav } from 'src/app/models/gasolineraFav.interface';
 
 const COLLECTION_FAV = 'gasAppFavorite'
 
+
+
 @Component({
   selector: 'app-gasolinera-fav',
   templateUrl: './gasolinera-fav.component.html',

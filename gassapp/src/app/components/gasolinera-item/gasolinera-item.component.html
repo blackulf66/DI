@@ -6,10 +6,10 @@
             <p>{{gasolineraInput.provincia}}</p>
             <p>{{gasolineraInput.cP}}</p>
             <p>{{gasolineraInput.direccion}}</p>
-            <img src="https://easygasgroup.com/wp-content/uploads/2020/02/A_opt.jpg" width="200px">
+            <img src="https://laranaroja.com/wp-content/uploads/2013/11/foto-wtf-hombre-vestido-leopardo-gasolinera.jpg" width="200px">
         </mat-card-content>
 
-        <button (click)="openDialogGasolineraDetail()"> detalle</button>
+        <button mat-raised-button color="primary" (click)="openDialogGasolineraDetail()"> detalle</button>
         <button mat-raised-button color="primary" (click)="getGoogleMaps(gasolineraInput.direccion)">Google</button>
          <button mat-raised-button color="primary" (click)="addFavorite(gasolineraInput)"><mat-icon>favorite</mat-icon></button>
         </mat-card>

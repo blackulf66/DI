@@ -1,3 +1,10 @@
+mat-card{
+    display: inline-flex;
+    align-items: center;
+    width: 350px;
+    height: 450px;
+}
+
 .title {
     text-overflow: ellipsis;
     overflow: hidden;
@@ -9,5 +16,9 @@
 .card {
     background-color: rgb(63, 0, 78);
     color:rgb(233, 187, 233);
-    
+}
+
+.grande{
+    display: flex;
+    justify-content: center;
 }

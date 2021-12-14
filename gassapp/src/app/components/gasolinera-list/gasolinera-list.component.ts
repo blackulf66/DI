@@ -4,6 +4,7 @@ import { ListaEESSPrecio, Municipios, ProvinciaListResponse } from 'src/app/mode
 import { GasolineraService } from 'src/app/services/gasolinera.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import firebase from 'firebase/compat/app';
+import { Router } from '@angular/router';
 
 const COLLECTION_GASO = 'users';
 
@@ -25,9 +26,9 @@ export class GasolineraListComponent implements OnInit {
   localidadesList!: Municipios[];
   mostrar: boolean = false;
   email!: string | null;
- 
+  nuevaLista!: string; 
 
-  constructor(private gasolineraService: GasolineraService, private auth: AngularFireAuth, private firestore: AngularFirestore) { }
+  constructor(private gasolineraService: GasolineraService, private auth: AngularFireAuth, private firestore: AngularFirestore ,private router: Router) { }
   
   ngOnInit(): void {
     this.gasolineraService.getAllGasolineras().subscribe(gasolineras => {
@@ -91,16 +92,20 @@ export class GasolineraListComponent implements OnInit {
   }
 
   logout() {
-    this.auth.signOut();
-    localStorage.removeItem('uid')
-    localStorage.removeItem('email')
-    localStorage.removeItem('name')
-    localStorage.removeItem('photoUrl')
+    this.auth.signOut().then(resp => {
+      localStorage.clear();
+      this.router.navigate(['']);
+    });
+
   }
   getPhotoUrl(){
     return localStorage.getItem('photoUrl');
   }
   getEmail(){
     return localStorage.getItem('email');
+  }
+
+  addNuevaLista(){
+     this.firestore.collection(this.nuevaLista).add({name: this.nuevaLista});
   }
 }

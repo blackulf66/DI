@@ -5,6 +5,7 @@ import { GasolineraDetailDialogComponent } from 'src/app/dialogs/gasolinera-deta
 import { ListaEESSPrecio } from 'src/app/models/gasolinera.interface';
 import { GasolineraService } from 'src/app/services/gasolinera.service';
 import { GasolineraListComponent } from 'src/app/components/gasolinera-list/gasolinera-list.component';
+import { GasolineraFav } from 'src/app/models/gasolineraFav.interface';
 
 const COLLECTION_FAV = 'gasAppFavorite'
 
@@ -16,6 +17,7 @@ const COLLECTION_FAV = 'gasAppFavorite'
 export class GasolineraItemComponent implements OnInit {
 
   @Input() gasolineraInput!: ListaEESSPrecio;
+
 
   constructor(private matDialog: MatDialog, private gasolineraService: GasolineraService, private firebase: AngularFirestore, private googleauth: GasolineraListComponent) { }
 

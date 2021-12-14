@@ -21,6 +21,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule, USE_DEVICE_LANGUAGE, USE_EMULATOR as USE_AUTH_EMULATOR } from '@angular/fire/compat/auth';
 import { AngularFireAuthGuardModule } from '@angular/fire/compat/auth-guard';
 import { GasolineraFavComponent } from './components/gasolinera-fav/gasolinera-fav.component';
+import { GasolinerasList2Component } from './components/gasolineras-list2/gasolineras-list2.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { GasolineraFavComponent } from './components/gasolinera-fav/gasolinera-f
     GasolineraItemComponent,
     GasolineraListComponent,
     GasolineraDetailDialogComponent,
-    GasolineraFavComponent
+    GasolineraFavComponent,
+    GasolinerasList2Component
   ],
   imports: [
     BrowserModule,
