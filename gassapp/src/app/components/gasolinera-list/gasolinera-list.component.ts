@@ -25,6 +25,7 @@ export class GasolineraListComponent implements OnInit {
   localidadesList!: Municipios[];
   mostrar: boolean = false;
   email!: string | null;
+ 
 
   constructor(private gasolineraService: GasolineraService, private auth: AngularFireAuth, private firestore: AngularFirestore) { }
   
@@ -87,6 +88,14 @@ export class GasolineraListComponent implements OnInit {
       localStorage.setItem('email', resp.user?.email? resp.user?.email: '');
       localStorage.setItem('uid', resp.user?.uid? resp.user?.uid: '');
     });
+  }
+
+  logout() {
+    this.auth.signOut();
+    localStorage.removeItem('uid')
+    localStorage.removeItem('email')
+    localStorage.removeItem('name')
+    localStorage.removeItem('photoUrl')
   }
   getPhotoUrl(){
     return localStorage.getItem('photoUrl');
