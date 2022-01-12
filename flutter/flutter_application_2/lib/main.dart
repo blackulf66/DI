@@ -42,8 +42,8 @@ class _MyHomePageState extends State<MyHomePage> {
             Image.asset(
               'assets/images/path_logo.png',
             ),
-            const Text(
-              'beautiful, private sharing',
+            const Text('beautiful, private sharing',
+              style : TextStyle(color: Colors.white),
             ),
             Container(
               margin: const EdgeInsets.only(top:(200.0)),
@@ -66,7 +66,9 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               margin: const EdgeInsets.only(top:(20.0)),
               child: const Text(
+                
                   'already have a path account',
+                  style : TextStyle(color: Colors.white),
                 ),
 
             ),
@@ -87,10 +89,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 margin: const EdgeInsets.only(top:(30.0)),
                 child: const Text(
                 'by using path, you agree to paths',
+                style : TextStyle(color: Colors.white),
               ),
               ),
               const Text(
                 'terms of use and privacy policy. ',
+                style : TextStyle(color: Colors.white),
               ),
           ],
         ),
