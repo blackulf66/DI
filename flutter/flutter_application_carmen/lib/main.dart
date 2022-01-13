@@ -69,13 +69,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   Container(
                     padding: const EdgeInsets.only(top: 24.0),
                     child: const Text(
-                      'Create an account to save favorites',
+                      'Redbull es como la sirenita',
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
                   const Text(
-                    'and download videos to watch anytime you want',
+                    'por arriba tiene teta por abajo la colita',
                     textAlign: TextAlign.center,
                     style: TextStyle(color: Colors.white),
                   ),
@@ -84,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Container(
                       padding: const EdgeInsets.only(top: 24.0),
                       child: SignInButton(
-                        Buttons.FacebookNew,
+                        Buttons.Facebook,
                         text: 'Sign in with Facebook',
                         onPressed: () {},
                       ),
