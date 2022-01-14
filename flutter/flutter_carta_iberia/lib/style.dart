@@ -8,6 +8,7 @@ class DamStyle {
   static const Color whiteColor = Color(0xFFFFFFFF);
   static const Color orangeColor = Color(0xFFE62F16);
   static const Color blackColor = Color.fromRGBO(0, 0, 0, 1);
+  static const Color greyColor = Color.fromRGBO(240, 240, 240, 1);
 
   // Margins, Paddings, Card properties
   static const double bodyPadding = 10.0;

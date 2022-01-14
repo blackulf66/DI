@@ -29,18 +29,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Column(
-        children: [
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 200),
+        appBar: AppBar(
+          title: Text(widget.title),
+        ),
+        body: Column(
+          children: [
+            Center(
+                child: Padding(
+              padding: const EdgeInsets.only(top: 1),
               child: Card(
                 shadowColor: Colors.purple,
                 elevation: 10,
@@ -58,8 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Column(
                           children: [
                             Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 20, left: 15),
+                              padding: const EdgeInsets.only(top: 20, left: 15),
                               child: RichText(
                                   text: const TextSpan(
                                       text: '20:55\n',
@@ -69,8 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     TextSpan(
                                         text: 'SALIDA',
                                         style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 10))
+                                            color: Colors.black, fontSize: 10))
                                   ])),
                             ),
                             Container(
@@ -120,34 +117,34 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(right: 130),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Image.asset(
-                                        'assets/images/iberia.png',
-                                        width: 60,
-                                      ),
-                                      RichText(
-                                          text: const TextSpan(
-                                        text: 'Iberia 7448',
-                                        style: TextStyle(
-                                            color: Colors.grey,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 15),
-                                      )),
-                                    ],
-                                  ),
-                                  RichText(
-                                      text: const TextSpan(
-                                          text: 'Duración 2h 10m',
+                                padding: const EdgeInsets.only(right: 130),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Image.asset(
+                                          'assets/images/iberia.png',
+                                          width: 60,
+                                        ),
+                                        RichText(
+                                            text: const TextSpan(
+                                          text: 'Iberia 7448',
                                           style: TextStyle(
                                               color: Colors.grey,
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 12)))
-                                ],
-                              )),
+                                              fontSize: 15),
+                                        )),
+                                      ],
+                                    ),
+                                    RichText(
+                                        text: const TextSpan(
+                                            text: 'Duración 2h 10m',
+                                            style: TextStyle(
+                                                color: Colors.grey,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 12)))
+                                  ],
+                                )),
                             Padding(
                               padding:
                                   const EdgeInsets.only(top: 20, right: 130),
@@ -183,11 +180,192 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ),
+            )),
+            Center(
+              child: Padding(
+                padding: EdgeInsets.only(top: 1),
+                child: Card(
+                  shadowColor: Colors.purple,
+                  elevation: 10,
+                  child: InkWell(
+                    splashColor: Colors.purple,
+                    child: SizedBox(
+                      width: 350,
+                      height: 350,
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(),
+                                child: RichText(
+                                  text: const TextSpan(
+                                    text: 'El más barato, Buena puntuación',
+                                    style: TextStyle(
+                                        color: Colors.green, fontSize: 13),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 70),
+                                child: RichText(
+                                  text: const TextSpan(
+                                    text: '45 ofertas',
+                                    style: TextStyle(
+                                        color: Colors.grey, fontSize: 13),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 60),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Image.asset(
+                                      'assets/images/rayo.png',
+                                      width: 200,
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 5),
+                                child: RichText(
+                                  text: const TextSpan(
+                                    text: 'Rayo',
+                                    style: TextStyle(
+                                        color: Colors.black, fontSize: 18),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 5),
+                                child: RichText(
+                                  text: const TextSpan(
+                                    text:
+                                        'sin puertas . es Rayo, chachauuu funciona con polvora',
+                                    style: TextStyle(
+                                        color: Colors.grey, fontSize: 13),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(children: [
+                            Row(
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsets.only(right: 10, top: 5),
+                                  child: Icon(
+                                    Icons.remove_done,
+                                    color: Colors.black,
+                                    size: 15.0,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 5, left: 5, right: 10),
+                                  child: RichText(
+                                    text: const TextSpan(
+                                      text: 'Man.',
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 13),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsets.only(right: 10, top: 5, left:5) ,
+                                  child: Icon(
+                                    Icons.ac_unit,
+                                    color: Colors.black,
+                                    size: 15.0,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 5, right: 10, left: 5),
+                                  child: RichText(
+                                    text: const TextSpan(
+                                      text: 'A/A.',
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 13),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsets.only(right: 10, top: 5, left:5) ,
+                                  child: Icon(
+                                    Icons.person,
+                                    color: Colors.black,
+                                    size: 15.0,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 5, right: 10, left: 5),
+                                  child: RichText(
+                                    text: const TextSpan(
+                                      text: '0',
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 13),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                             Row(
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsets.only(right: 10, top: 5, left:5) ,
+                                  child: Icon(
+                                    Icons.hot_tub,
+                                    color: Colors.black,
+                                    size: 15.0,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 5, right: 10, left: 5),
+                                  child: RichText(
+                                    text: const TextSpan(
+                                      text: '9',
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 13),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )
+                            
+                          ]),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ),
-          )
-        ],
-      ),
-      backgroundColor: const Color.fromRGBO(230, 230, 230, 1)
-    );
+          ],
+        ),
+        backgroundColor: const Color.fromRGBO(230, 230, 230, 1));
   }
 }
