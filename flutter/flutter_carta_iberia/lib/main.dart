@@ -189,21 +189,21 @@ class _MyHomePageState extends State<MyHomePage> {
                   elevation: 10,
                   child: InkWell(
                     splashColor: Colors.purple,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+
                     child: SizedBox(
-                      width: 350,
-                      height: 350,
+                      width: 330,
+                      height: 330,
                       child: Column(
                         children: [
                           Row(
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.only(),
-                                child: RichText(
-                                  text: const TextSpan(
-                                    text: 'El más barato, Buena puntuación',
-                                    style: TextStyle(
-                                        color: Colors.green, fontSize: 13),
-                                  ),
+                              RichText(
+                                text: const TextSpan(
+                                  text: 'El más barato, Buena puntuación',
+                                  style: TextStyle(
+                                      color: Colors.green, fontSize: 13),
                                 ),
                               ),
                               Padding(
@@ -254,7 +254,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 child: RichText(
                                   text: const TextSpan(
                                     text:
-                                        'sin puertas . es Rayo, chachauuu funciona con polvora',
+                                        'sin puertas . es Rayo, chachauuu funciona con alinol',
                                     style: TextStyle(
                                         color: Colors.grey, fontSize: 13),
                                   ),
@@ -280,7 +280,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     text: const TextSpan(
                                       text: 'Man.',
                                       style: TextStyle(
-                                          color: Colors.black, fontSize: 13),
+                                          color: Colors.grey, fontSize: 13),
                                     ),
                                   ),
                                 ),
@@ -289,7 +289,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             Row(
                               children: [
                                 const Padding(
-                                  padding: EdgeInsets.only(right: 10, top: 5, left:5) ,
+                                  padding: EdgeInsets.only(
+                                      right: 10, top: 5, left: 5),
                                   child: Icon(
                                     Icons.ac_unit,
                                     color: Colors.black,
@@ -303,7 +304,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     text: const TextSpan(
                                       text: 'A/A.',
                                       style: TextStyle(
-                                          color: Colors.black, fontSize: 13),
+                                          color: Colors.grey, fontSize: 13),
                                     ),
                                   ),
                                 ),
@@ -312,7 +313,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             Row(
                               children: [
                                 const Padding(
-                                  padding: EdgeInsets.only(right: 10, top: 5, left:5) ,
+                                  padding: EdgeInsets.only(
+                                      right: 10, top: 5, left: 5),
                                   child: Icon(
                                     Icons.person,
                                     color: Colors.black,
@@ -326,16 +328,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                     text: const TextSpan(
                                       text: '0',
                                       style: TextStyle(
-                                          color: Colors.black, fontSize: 13),
+                                          color: Colors.grey, fontSize: 13),
                                     ),
                                   ),
                                 ),
                               ],
                             ),
-                             Row(
+                            Row(
                               children: [
                                 const Padding(
-                                  padding: EdgeInsets.only(right: 10, top: 5, left:5) ,
+                                  padding: EdgeInsets.only(
+                                      right: 10, top: 5, left: 5),
                                   child: Icon(
                                     Icons.hot_tub,
                                     color: Colors.black,
@@ -349,19 +352,45 @@ class _MyHomePageState extends State<MyHomePage> {
                                     text: const TextSpan(
                                       text: '9',
                                       style: TextStyle(
-                                          color: Colors.black, fontSize: 13),
+                                          color: Colors.grey, fontSize: 13),
                                     ),
                                   ),
                                 ),
                               ],
                             )
-                            
                           ]),
+                          const Divider(
+                              height: 25,
+                              thickness: 1,
+                              indent: 0,
+                              endIndent: 0,
+                              color: Colors.grey,
+                            ),
+                          Row(
+                            children: [
+                               RichText(
+                                  text: const TextSpan(
+                                      text: '35 €',
+                                      style: TextStyle(
+                                          color: Colors.blue, fontSize: 18)),
+                                ),  
+                              Padding(
+                                padding: const EdgeInsets.only(left: 194),
+                                child: RichText(
+                                  text: const TextSpan(
+                                      text: 'LOCALIZAR',
+                                      style: TextStyle(
+                                          color: Colors.blue, fontSize: 18)),
+                                ),
+                              ),
+                            ],
+                          )
                         ],
                       ),
                     ),
                   ),
                 ),
+              ),
               ),
             ),
           ],
