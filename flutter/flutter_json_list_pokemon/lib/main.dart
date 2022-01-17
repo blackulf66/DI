@@ -14,11 +14,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'pokemon Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'pokemon Demo Home Page'),
     );
   }
 }
@@ -42,28 +42,63 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: Center(
         child: ListView.builder(
+          scrollDirection: Axis.vertical,
           itemCount: items.length,
-          itemBuilder: (context, index) {
-            return Card(
-              child: InkWell(
-                splashColor: Colors.purple.withAlpha(30),
-                onTap: () {
-                  debugPrint('Card tapped.');
-                },
-                child: SizedBox(
-                  height: 200,
-                  width: 200,
-                  child: Column(children: [
-                      Image.network('https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${index+1}.png?raw=true'),
-                      Text(items.elementAt(index).name),
-                  ],)
-                  
+          itemBuilder: (context, index) 
+          {
+            return Padding(
+              padding: const EdgeInsets.all(9),
+              child: Flexible(
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  shadowColor: Colors.black,
+                  elevation: 10,
+                  child: InkWell(
+                    splashColor: Colors.purple.withAlpha(30),
+                    onTap: () {
+                      debugPrint('si.');
+                    },
+                    child: Container(
+                      color: const Color.fromRGBO(133, 6, 247, 0.4),
+                      child: Padding(
+                        padding: const EdgeInsets.all(9),
+                        child: SizedBox(
+                          height: 80,
+                          width: 100,
+                          child: Row(
+                            children: [
+                              RichText(
+                                text: const TextSpan(
+                                  text: 'Entrenador ',
+                                  style: TextStyle(fontWeight: FontWeight.bold , color: Colors.black)
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 9),
+                                child: Image.network(
+                                    'https://dc722jrlp2zu8.cloudfront.net/media/teachers/miguel-campos-front.webp'),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 30),
+                                child: Text(items.elementAt(index).name),
+                              ),
+                              Image.network(
+                                  'https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${index + 1}.png?raw=true'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ),
             );
           },
         ),
       ),
+      backgroundColor: Colors.grey,
     );
   }
 }

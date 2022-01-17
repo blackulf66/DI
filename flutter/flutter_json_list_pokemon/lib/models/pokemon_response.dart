@@ -2,7 +2,7 @@ class PokemonResponse {
   PokemonResponse({
     required this.count,
     required this.next,
-     this.previous,
+    this.previous,
     required this.results,
   });
   late final int count;
