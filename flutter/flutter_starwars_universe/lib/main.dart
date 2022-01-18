@@ -17,9 +17,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'STAR WARS UNIVERSE'),
     );
   }
 }
@@ -45,11 +45,24 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.only(top: 200),
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Stack(children: [
+        Container(
+              decoration:  const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage("assets/images/galaxy.gif"),
+                      fit: BoxFit.cover),
+                      ),
+                      ),
+
+
+       Padding(
+        padding: const EdgeInsets.only(top: 50),
         child: Column(
           children: [
-           const Text("Personajes"),
+            const Text("Personajes", style: TextStyle(fontStyle: FontStyle.italic, color: Colors.white),),
             SizedBox(
               height: 200,
               child: ListView.builder(
@@ -59,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   return Padding(
                     padding: const EdgeInsets.all(9),
                     child: Container(
-                      color: const Color.fromRGBO(133, 6, 247, 0.4),
+                      color: const Color.fromRGBO(1, 1, 1, 0),
                       child: Padding(
                         padding: const EdgeInsets.all(9),
                         child: SizedBox(
@@ -67,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             child: Column(children: [
                               Padding(
                                 padding: const EdgeInsets.all(10),
-                                child: Text(items.elementAt(index).name),
+                                child: Text(items.elementAt(index).name , style: const TextStyle(fontStyle: FontStyle.italic, color: Colors.white),),
                               ),
                               Image.network(
                                 "https://starwars-visualguide.com/assets/img/characters/${index + 1}.jpg",
@@ -80,7 +93,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
               ),
             ),
-            const Text("Planetas"),
+            const Padding(
+              padding: EdgeInsets.only(top:100),
+
+              child:Text("Planetas", style: TextStyle(fontStyle: FontStyle.italic, color: Colors.white),),
+              ),
+             
+            
             SizedBox(
               height: 200,
               child: ListView.builder(
@@ -90,17 +109,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   return Padding(
                     padding: const EdgeInsets.all(9),
                     child: Container(
-                      color: const Color.fromRGBO(133, 6, 247, 0.4),
+                      color: const Color.fromRGBO(1, 1, 1, 0),
                       child: Padding(
                         padding: const EdgeInsets.all(9),
                         child: SizedBox(
                             width: 150,
-                            
                             child: Column(
                               children: [
-                                Text(items2.elementAt(index).name),
+                                Text(items2.elementAt(index).name , style: const TextStyle(fontStyle: FontStyle.italic, color: Colors.white),),
                                 Image.network(
-                                    'https://starwars-visualguide.com/assets/img/planets/${index + 1}.jpg', width: 120,),
+                                  'https://starwars-visualguide.com/assets/img/planets/${index + 1}.jpg',
+                                  width: 120,
+                                ),
                               ],
                             )),
                       ),
@@ -112,7 +132,8 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      backgroundColor: Colors.grey,
+        
+      ],),
     );
   }
 }
