@@ -118,6 +118,27 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Text('Drawer Header'),
+            ),
+            ListTile(
+              title: const Text('Item 1'),
+              onTap: () {},
+            ),
+            ListTile(
+              title: const Text('Item 2'),
+              onTap: () {},
+            ),
+          ],
+        ),
+      ),
     );
   }
 
@@ -129,6 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
       throw Exception('Failed to load people');
     }
   }
+
   Future<List<Planets>> fetchPlanets() async {
     final response = await http.get(Uri.parse('https://swapi.dev/api/planets'));
     if (response.statusCode == 200) {
@@ -137,7 +159,6 @@ class _MyHomePageState extends State<MyHomePage> {
       throw Exception('Failed to load planets');
     }
   }
-
 
   Widget _peopleList(List<People> peopleList) {
     return ListView.builder(
@@ -148,95 +169,87 @@ class _MyHomePageState extends State<MyHomePage> {
       },
     );
   }
-   Widget _planetsList(List<Planets> planetsList) {
+
+  Widget _planetsList(List<Planets> planetsList) {
     return ListView.builder(
       scrollDirection: Axis.horizontal,
       itemCount: planetsList.length,
       itemBuilder: (context, index) {
-        return _planetsItem(planetsList.elementAt(index) ,index);
+        return _planetsItem(planetsList.elementAt(index), index);
       },
     );
   }
-   Widget _planetsItem(Planets planets, int index) {
-    return  Card(
-      color:  Colors.transparent,
+
+  Widget _planetsItem(Planets planets, int index) {
+    return Card(
+      color: Colors.transparent,
       shadowColor: Colors.red,
-      elevation: 200 ,
-        child: InkWell(
-          splashColor: Colors.purple.withAlpha(30),
-          onTap: () {
-            debugPrint('Card tapped');
-          },
-      child: Padding(
-        padding: const EdgeInsets.all(9),
-        child: Container(
-          color: const Color.fromRGBO(1, 1, 1, 0),
-          child: Padding(
-            padding: const EdgeInsets.all(9),
-            child: SizedBox(
-              width: 150,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Text(
-                      planets.name,
-                      style: const TextStyle(
-                          fontStyle: FontStyle.italic, color: Colors.white),
+      elevation: 200,
+      child: InkWell(
+        splashColor: Colors.purple.withAlpha(30),
+        onTap: () {
+          debugPrint('Card tapped');
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(9),
+          child: Container(
+            color: const Color.fromRGBO(1, 1, 1, 0),
+            child: Padding(
+              padding: const EdgeInsets.all(9),
+              child: SizedBox(
+                width: 150,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Text(
+                        planets.name,
+                        style: const TextStyle(
+                            fontStyle: FontStyle.italic, color: Colors.white),
+                      ),
                     ),
-                  ),
-                 Image.network(
-                                    'https://starwars-visualguide.com/assets/img/planets/${index + 1}.jpg',
-                                    width: 120,
-                                  ),
-                ],
+                    Image.network(
+                      'https://starwars-visualguide.com/assets/img/planets/${index + 1}.jpg',
+                      width: 120,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
         ),
       ),
-    ),
     );
   }
 }
- 
 
-  Widget _peopleItem(People people , int index) {
-    return Padding(
-      padding: const EdgeInsets.all(9),
-      child: Container(
-        color: const Color.fromRGBO(1, 1, 1, 0),
-        child: Padding(
-          padding: const EdgeInsets.all(9),
-          child: SizedBox(
-            width: 150,
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Text(
-                    people.name,
-                    style: const TextStyle(
-                        fontStyle: FontStyle.italic, color: Colors.white),
-                  ),
+Widget _peopleItem(People people, int index) {
+  return Padding(
+    padding: const EdgeInsets.all(9),
+    child: Container(
+      color: const Color.fromRGBO(1, 1, 1, 0),
+      child: Padding(
+        padding: const EdgeInsets.all(9),
+        child: SizedBox(
+          width: 150,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Text(
+                  people.name,
+                  style: const TextStyle(
+                      fontStyle: FontStyle.italic, color: Colors.white),
                 ),
-                 Image.network(
-                                "https://starwars-visualguide.com/assets/img/characters/${index + 1}.jpg",
-                                width: 90,
-                              )
-                
-              ],
-            ),
+              ),
+              Image.network(
+                "https://starwars-visualguide.com/assets/img/characters/${index + 1}.jpg",
+                width: 90,
+              )
+            ],
           ),
         ),
       ),
-    );
-    
-    
- 
-
-  
-
-  }
-
-
+    ),
+  );
+}
