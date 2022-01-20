@@ -53,88 +53,149 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Stack(
-        children: [
-          Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/images/galaxy.gif"),
-                  fit: BoxFit.cover),
+      body: Stack(children: [
+        Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/images/galaxy.gif"),
+                fit: BoxFit.cover),
+          ),
+        ),
+         Padding(
+          padding: const EdgeInsets.only(top:300),
+          child:  Container(
+            color: const Color.fromRGBO(1, 1, 1, 0.6),
+            child: const Text(
+              "GUARDIANS OF THE GALAXY",
+              style: TextStyle(
+                  fontSize: 30, fontStyle: FontStyle.italic, color: Colors.white),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 50),
-            child: Column(
-              children: [
-                const Text(
-                  "Personajes",
-                  style: TextStyle(
-                      fontSize: 30,
-                      fontStyle: FontStyle.italic,
-                      color: Colors.white),
-                ),
-                SizedBox(
-                  height: 200,
-                  child: FutureBuilder<List<People>>(
-                      future: items,
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          return _peopleList(snapshot.data!);
-                        } else if (snapshot.hasError) {
-                          return Text('${snapshot.error}');
-                        }
-                        {
-                          return const Text("buscando");
-                        }
-                      }),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 80),
-                  child: Text(
-                    "Planetas",
-                    style: TextStyle(
-                        fontSize: 30,
-                        fontStyle: FontStyle.italic,
-                        color: Colors.white),
-                  ),
-                ),
-                SizedBox(
-                  height: 200,
-                  child: FutureBuilder<List<Planets>>(
-                      future: items2,
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          return _planetsList(snapshot.data!);
-                        } else if (snapshot.hasError) {
-                          return Text('${snapshot.error}');
-                        }
-                        {
-                          return const Text("buscando");
-                        }
-                      }),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
+        ),
+      ]),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Colors.red,
               ),
               child: Text('Drawer Header'),
             ),
             ListTile(
-              title: const Text('Item 1'),
-              onTap: () {},
+              title: const Text('Personajes'),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Scaffold(
+                            appBar: AppBar(
+                              title: Text(widget.title),
+                            ),
+                            body: Stack(
+                              children: [
+                                Container(
+                                  decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            "assets/images/galaxy.gif"),
+                                        fit: BoxFit.cover),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 50),
+                                  child: Column(
+                                    children: [
+                                      const Text(
+                                        "Personajes",
+                                        style: TextStyle(
+                                            fontSize: 30,
+                                            fontStyle: FontStyle.italic,
+                                            color: Colors.white),
+                                      ),
+                                      SizedBox(
+                                        height: 200,
+                                        child: FutureBuilder<List<People>>(
+                                            future: items,
+                                            builder: (context, snapshot) {
+                                              if (snapshot.hasData) {
+                                                return _peopleList(
+                                                    snapshot.data!);
+                                              } else if (snapshot.hasError) {
+                                                return Text(
+                                                    '${snapshot.error}');
+                                              }
+                                              {
+                                                return const Text("buscando");
+                                              }
+                                            }),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ))));
+              },
             ),
             ListTile(
-              title: const Text('Item 2'),
-              onTap: () {},
+              title: const Text('Planetas'),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Scaffold(
+                              appBar: AppBar(
+                                title: Text(widget.title),
+                              ),
+                              body: Stack(
+                                children: [
+                                  Container(
+                                    decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/images/galaxy.gif"),
+                                          fit: BoxFit.cover),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 50),
+                                    child: Column(
+                                      children: [
+                                        const Padding(
+                                          padding: EdgeInsets.only(top: 80),
+                                          child: Text(
+                                            "Planetas",
+                                            style: TextStyle(
+                                                fontSize: 30,
+                                                fontStyle: FontStyle.italic,
+                                                color: Colors.white),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 200,
+                                          child: FutureBuilder<List<Planets>>(
+                                              future: items2,
+                                              builder: (context, snapshot) {
+                                                if (snapshot.hasData) {
+                                                  return _planetsList(
+                                                      snapshot.data!);
+                                                } else if (snapshot.hasError) {
+                                                  return Text(
+                                                      '${snapshot.error}');
+                                                }
+                                                {
+                                                  return const Text("buscando");
+                                                }
+                                              }),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )));
+              },
             ),
           ],
         ),
