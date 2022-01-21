@@ -61,19 +61,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 fit: BoxFit.cover),
           ),
         ),
-         Padding(
-          padding: const EdgeInsets.only(top:300),
-          child:  Container(
+        Padding(
+          padding: const EdgeInsets.only(top: 300),
+          child: Container(
             color: const Color.fromRGBO(1, 1, 1, 0.6),
             child: const Text(
               "GUARDIANS OF THE GALAXY",
               style: TextStyle(
-                  fontSize: 30, fontStyle: FontStyle.italic, color: Colors.white),
+                  fontSize: 30,
+                  fontStyle: FontStyle.italic,
+                  color: Colors.white),
             ),
           ),
         ),
       ]),
       drawer: Drawer(
+        backgroundColor: Colors.red,
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
@@ -81,7 +84,13 @@ class _MyHomePageState extends State<MyHomePage> {
               decoration: BoxDecoration(
                 color: Colors.red,
               ),
-              child: Text('Drawer Header'),
+              child: Text(
+                "MENU",
+                style: TextStyle(
+                    fontSize: 30,
+                    fontStyle: FontStyle.italic,
+                    color: Colors.white),
+              ),
             ),
             ListTile(
               title: const Text('Personajes'),
