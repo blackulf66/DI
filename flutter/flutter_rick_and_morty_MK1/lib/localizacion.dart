@@ -39,14 +39,14 @@ class _LocalizacionState extends State<Localizacione>
             child: Column(
               children: [
                 const Text(
-                  "Personajes",
+                  "localizaciones",
                   style: TextStyle(
                       fontSize: 30,
                       fontStyle: FontStyle.italic,
                       color: Colors.white),
                 ),
                 SizedBox(
-                  height: 200,
+                  height: 500,
                   child: FutureBuilder<List<Localizacion>>(
                       future: items2,
                       builder: (context, snapshot) {
@@ -81,7 +81,7 @@ class _LocalizacionState extends State<Localizacione>
  // ignore: non_constant_identifier_names
  Widget _LocalizacionList(List<Localizacion> localizacionList) {
     return ListView.builder(
-      scrollDirection: Axis.horizontal,
+      scrollDirection: Axis.vertical,
       itemCount: localizacionList.length,
       itemBuilder: (context, index) {
         return _LocalizacionItem(localizacionList.elementAt(index), index);
@@ -94,7 +94,7 @@ Widget _LocalizacionItem(Localizacion loca, int index) {
   return Padding(
     padding: const EdgeInsets.all(9),
     child: Container(
-      color: const Color.fromRGBO(1, 1, 1, 1),
+      color: const Color.fromRGBO(1, 1, 1,0.5),
       child: Padding(
         padding: const EdgeInsets.all(9),
         child: SizedBox(
