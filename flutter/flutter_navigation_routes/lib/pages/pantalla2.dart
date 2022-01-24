@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_navigation_routes/pages/pantalla1.dart';
+import 'package:flutter_navigation_routes/pages/pantalla3.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: Image.network(
-                    'https://www.supermoments.es/wp/wp-content/uploads/2015/01/frozen-elsa-y-anna.jpg',
+                    'https://pbs.twimg.com/profile_images/1097921359387258883/mkAwTxB1_400x400.png',
                     width: 400,
                   ),
                 ),
@@ -63,7 +64,12 @@ class MyApp extends StatelessWidget {
                             color: Color.fromRGBO(1, 1, 1, 0.3),
                           ),
                         ),
-                        onTap: () {},
+                         onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const MyApp3()));
+                        },
                       ),
                       Container(
                           alignment: Alignment.topRight,
@@ -73,7 +79,9 @@ class MyApp extends StatelessWidget {
                               'sign up',
                               style:
                                   TextStyle(fontSize: 15, color: Colors.black),
+                                  
                             ),
+                            
                           )),
                       InkWell(
                         child: SizedBox(

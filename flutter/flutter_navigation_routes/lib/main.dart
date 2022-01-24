@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_navigation_routes/pages/pantalla1.dart';
 import 'package:flutter_navigation_routes/pages/pantalla2.dart';
+import 'package:flutter_navigation_routes/pages/pantalla3.dart';
 
 void main() {
   runApp(const MyApp22());
@@ -19,6 +21,9 @@ class MyApp22 extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const MyApp(),
+        '/login':(context) => const MyApp2(),
+        '/register':(context) => const MyApp3(),
+        
       },
     );
   }

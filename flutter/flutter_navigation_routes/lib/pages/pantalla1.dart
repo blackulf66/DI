@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_navigation_routes/pages/pantalla3.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
 
@@ -12,7 +13,7 @@ class MyApp2 extends StatelessWidget {
     return MaterialApp(
       title: _title,
       home: Scaffold(
-          appBar: AppBar(title: const Text(_title)),
+          appBar: AppBar(title: const Text(_title), backgroundColor: Colors.red,),
           body: Padding(
               padding: const EdgeInsets.all(10),
               child: ListView(
@@ -73,7 +74,11 @@ class MyApp2 extends StatelessWidget {
                         padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                         child: ElevatedButton(
                           child: const Text('sign in'),
-                          onPressed: () {},
+                          onPressed: (
+                            
+                          ) {},
+                          style: ElevatedButton.styleFrom(primary: Colors.red),
+                          
                         )),
                   ),
                   Padding(
@@ -148,7 +153,12 @@ class MyApp2 extends StatelessWidget {
                             'Registrese',
                             style: TextStyle(fontSize: 20),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const MyApp3()));
+                          },
                         )
                       ],
                       mainAxisAlignment: MainAxisAlignment.center,
