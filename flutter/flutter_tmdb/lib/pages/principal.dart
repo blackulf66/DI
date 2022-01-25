@@ -1,7 +1,20 @@
 import 'package:flutter/material.dart';
 
-class Principal extends StatelessWidget {
+class Principal extends StatefulWidget {
   const Principal({Key? key}) : super(key: key);
+
+  @override
+  State<Principal> createState() => _PrincipalHomeState();
+}
+
+class _PrincipalHomeState extends State<Principal> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   static const String _title = 'el titulo';
 
@@ -11,7 +24,7 @@ class Principal extends StatelessWidget {
       title: _title,
       home: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.only(top: 30),
+          padding: const EdgeInsets.all(30),
           child: Column(
             children: [
               Row(
@@ -32,7 +45,7 @@ class Principal extends StatelessWidget {
                     child: Text('Black ULf'),
                   ),
                   const Padding(
-                    padding: const EdgeInsets.only(left: 200),
+                    padding: const EdgeInsets.only(left: 180),
                     child: Icon(
                       Icons.favorite,
                       color: Colors.pink,
@@ -44,16 +57,56 @@ class Principal extends StatelessWidget {
               ),
               Row(
                 children: [
-                  RichText(
-                    text: TextSpan(
-                      text: 'MOVIE , SERIES, TV SHOWS... ',
-                      style: TextStyle(fontSize: 30),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: SizedBox(
+                      width: 300,
+                      child: RichText(
+                        text: const TextSpan(
+                          text: 'MOVIE , SERIES, TV SHOWS... ',
+                          style: TextStyle(fontSize: 30, color: Colors.black),
+                        ),
+                      ),
                     ),
                   )
                 ],
               ),
+              Row(
+                children: const [
+                  SizedBox(
+                    height: 510,
+                    width: 330,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(color: Colors.red),
+                    ),
+                  )
+                ],
+              )
             ], //columna principal
           ),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.star , color: Colors.black,),
+              label: 'Trending',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.video_camera_back, color: Colors.black),
+              label: 'Films',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.people, color: Colors.black),
+              label: 'People',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.add_box, color: Colors.black),
+              label: 'otro',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.purple[800],
+          onTap: _onItemTapped,
         ),
       ),
     );
