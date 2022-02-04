@@ -14,7 +14,6 @@ class WeatherResponse {
     required this.name,
     required this.cod,
   });
-  
   late final Coord coord;
   late final List<Weather> weather;
   late final String base;
@@ -125,8 +124,8 @@ class Main {
   });
   late final double temp;
   late final double feelsLike;
-  late final double tempMin;
-  late final double tempMax;
+  late final dynamic tempMin;
+  late final dynamic tempMax;
   late final int pressure;
   late final int humidity;
   
@@ -155,23 +154,19 @@ class Wind {
   Wind({
     required this.speed,
     required this.deg,
-    required this.gust,
   });
   late final double speed;
   late final int deg;
-  late final double gust;
   
   Wind.fromJson(Map<String, dynamic> json){
     speed = json['speed'];
     deg = json['deg'];
-    gust = json['gust'];
   }
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
     _data['speed'] = speed;
     _data['deg'] = deg;
-    _data['gust'] = gust;
     return _data;
   }
 }
@@ -197,12 +192,14 @@ class Sys {
   Sys({
     required this.type,
     required this.id,
+    required this.message,
     required this.country,
     required this.sunrise,
     required this.sunset,
   });
   late final int type;
   late final int id;
+  late final double? message;
   late final String country;
   late final int sunrise;
   late final int sunset;
@@ -210,6 +207,7 @@ class Sys {
   Sys.fromJson(Map<String, dynamic> json){
     type = json['type'];
     id = json['id'];
+    message = json['message'];
     country = json['country'];
     sunrise = json['sunrise'];
     sunset = json['sunset'];
@@ -219,6 +217,7 @@ class Sys {
     final _data = <String, dynamic>{};
     _data['type'] = type;
     _data['id'] = id;
+    _data['message'] = message;
     _data['country'] = country;
     _data['sunrise'] = sunrise;
     _data['sunset'] = sunset;

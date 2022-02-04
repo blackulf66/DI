@@ -1,6 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 import 'constantes.dart';
+import 'models/weather_model.dart';
+
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(const Principal());
@@ -8,6 +13,7 @@ void main() {
 
 class Principal extends StatelessWidget {
   const Principal({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -32,6 +38,14 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
 
+  late Future<WeatherResponse> items;
+
+   @override
+  void initState() {
+    items = fetchWeather();
+    super.initState();
+  }
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -41,18 +55,25 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: 
+          SizedBox(
+            height: 200,
+            child: FutureBuilder<WeatherResponse>(
+                future: items,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return Container(
           child: Column(
         children: [
           Center(
             child: Padding(
                 padding: EdgeInsets.only(top: 120),
                 child: RichText(
-                  text: const TextSpan(
+                  text:  TextSpan(
                     children: <TextSpan>[
                       TextSpan(
-                          text: 'Jotumheim , yggdrassil',
-                          style: TextStyle(
+                          text: snapshot.data!.name,
+                          style: const TextStyle(
                               fontSize: 30, fontWeight: FontWeight.bold)),
                     ],
                   ),
@@ -80,7 +101,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Image(image: AssetImage('assets/images/nublado.png'))),
           )),
           Container(
-             
             child: Padding(
               padding: const EdgeInsets.all(0.0),
               child: Row(
@@ -89,35 +109,33 @@ class _MyHomePageState extends State<MyHomePage> {
                   Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(right: 20,left:20),
+                        padding: const EdgeInsets.only(right: 20, left: 20),
                         child: RichText(
                           text: const TextSpan(
                             children: <TextSpan>[
                               TextSpan(
                                   text: 'temperatura',
                                   style: TextStyle(
-                                      fontSize: 15, fontWeight: FontWeight.bold)),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold)),
                             ],
                           ),
                         ),
                       ),
-
                       RichText(
-                        text: const TextSpan(
+                        text: TextSpan(
                           children: <TextSpan>[
                             TextSpan(
-                                text: '-90º',
+                                text: '${snapshot.data!.main.tempMax}',
                                 style: TextStyle(
                                     fontSize: 15, fontWeight: FontWeight.bold)),
                           ],
                         ),
                       ),
-                      
                     ],
                   ),
-
                   Padding(
-                        padding: const EdgeInsets.only(right: 20,left:20),
+                    padding: const EdgeInsets.only(right: 20, left: 20),
                     child: Column(
                       children: [
                         RichText(
@@ -126,27 +144,27 @@ class _MyHomePageState extends State<MyHomePage> {
                               TextSpan(
                                   text: 'humedad',
                                   style: TextStyle(
-                                      fontSize: 15, fontWeight: FontWeight.bold)),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold)),
                             ],
                           ),
                         ),
-
                         RichText(
                           text: const TextSpan(
                             children: <TextSpan>[
                               TextSpan(
                                   text: '0%',
                                   style: TextStyle(
-                                      fontSize: 15, fontWeight: FontWeight.bold)),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold)),
                             ],
                           ),
                         ),
-                        
                       ],
                     ),
                   ),
                   Padding(
-                        padding: const EdgeInsets.only(right: 20,left:20),
+                    padding: const EdgeInsets.only(right: 20, left: 20),
                     child: Column(
                       children: [
                         RichText(
@@ -155,86 +173,100 @@ class _MyHomePageState extends State<MyHomePage> {
                               TextSpan(
                                   text: 'viento',
                                   style: TextStyle(
-                                      fontSize: 15, fontWeight: FontWeight.bold)),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold)),
                             ],
                           ),
                         ),
-
                         RichText(
                           text: const TextSpan(
                             children: <TextSpan>[
                               TextSpan(
                                   text: '200km/h',
                                   style: TextStyle(
-                                      fontSize: 15, fontWeight: FontWeight.bold)),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold)),
                             ],
                           ),
                         ),
-                        
                       ],
                     ),
                   )
                 ],
               ),
-            
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(19.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: const
-              [
-               Text('hoy',
-                  style: TextStyle(color: Colors.white )),
-              ]
-               
-            ),
-          )
-        ],
-      )),
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: const [
+                  Text('hoy', style: TextStyle(color: Colors.white)),
+                ]),)]),);
+
+                  } else if (snapshot.hasError) {
+                    return Text('${snapshot.error}');
+                  }
+                  {
+                    return const Text("buscando");
+                  }
+                }),
+          ),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
-              color: azuliconomenu,
+              color: Style.azuliconomenu,
             ),
             label: 'Home',
-            backgroundColor: moradomenu,
+            backgroundColor: Style.moradomenu,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.business,
-              color: azuliconomenu,
+              color: Style.azuliconomenu,
             ),
             label: 'Business',
-            backgroundColor: moradomenu,
+            backgroundColor: Style.moradomenu,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.school,
-              color: azuliconomenu,
+              color: Style.azuliconomenu,
             ),
             label: 'School',
-            backgroundColor: moradomenu,
+            backgroundColor: Style.moradomenu,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.settings,
-              color: azuliconomenu,
+              color: Style.azuliconomenu,
             ),
             label: 'Settings',
-            backgroundColor: moradomenu,
+            backgroundColor: Style.moradomenu,
           ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.white,
         onTap: _onItemTapped,
       ),
-      backgroundColor: colordefondo,
+      backgroundColor: Style.colordefondo,
     );
   }
-}
 
-//f28e837e4595cfac202f03b29b52beca api key
+  Future<WeatherResponse> fetchWeather() async {
+    final response = await http.get(Uri.parse(
+        'https://api.openweathermap.org/data/2.5/weather?lat=37.3875771&lon=-6.0280327&appid=e6355afab996c365828cab0806e44520&units=metric'));
+    if (response.statusCode == 200) {
+      return WeatherResponse.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('SILBIDOS');
+    }
+  }
+
+ 
+  }
+
+
+//f28e837e4595cfac202f03b29b52beca api key;
