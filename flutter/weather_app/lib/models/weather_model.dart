@@ -27,10 +27,11 @@ class WeatherResponse {
   late final int id;
   late final String name;
   late final int cod;
-  
-  WeatherResponse.fromJson(Map<String, dynamic> json){
+
+  WeatherResponse.fromJson(Map<String, dynamic> json) {
     coord = Coord.fromJson(json['coord']);
-    weather = List.from(json['weather']).map((e)=>Weather.fromJson(e)).toList();
+    weather =
+        List.from(json['weather']).map((e) => Weather.fromJson(e)).toList();
     base = json['base'];
     main = Main.fromJson(json['main']);
     visibility = json['visibility'];
@@ -47,7 +48,7 @@ class WeatherResponse {
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
     _data['coord'] = coord.toJson();
-    _data['weather'] = weather.map((e)=>e.toJson()).toList();
+    _data['weather'] = weather.map((e) => e.toJson()).toList();
     _data['base'] = base;
     _data['main'] = main.toJson();
     _data['visibility'] = visibility;
@@ -70,8 +71,8 @@ class Coord {
   });
   late final double lon;
   late final double lat;
-  
-  Coord.fromJson(Map<String, dynamic> json){
+
+  Coord.fromJson(Map<String, dynamic> json) {
     lon = json['lon'];
     lat = json['lat'];
   }
@@ -95,8 +96,8 @@ class Weather {
   late final String main;
   late final String description;
   late final String icon;
-  
-  Weather.fromJson(Map<String, dynamic> json){
+
+  Weather.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     main = json['main'];
     description = json['description'];
@@ -128,8 +129,8 @@ class Main {
   late final dynamic tempMax;
   late final int pressure;
   late final int humidity;
-  
-  Main.fromJson(Map<String, dynamic> json){
+
+  Main.fromJson(Map<String, dynamic> json) {
     temp = json['temp'];
     feelsLike = json['feels_like'];
     tempMin = json['temp_min'];
@@ -157,8 +158,8 @@ class Wind {
   });
   late final double speed;
   late final int deg;
-  
-  Wind.fromJson(Map<String, dynamic> json){
+
+  Wind.fromJson(Map<String, dynamic> json) {
     speed = json['speed'];
     deg = json['deg'];
   }
@@ -176,8 +177,8 @@ class Clouds {
     required this.all,
   });
   late final int all;
-  
-  Clouds.fromJson(Map<String, dynamic> json){
+
+  Clouds.fromJson(Map<String, dynamic> json) {
     all = json['all'];
   }
 
@@ -203,8 +204,8 @@ class Sys {
   late final String country;
   late final int sunrise;
   late final int sunset;
-  
-  Sys.fromJson(Map<String, dynamic> json){
+
+  Sys.fromJson(Map<String, dynamic> json) {
     type = json['type'];
     id = json['id'];
     message = json['message'];
