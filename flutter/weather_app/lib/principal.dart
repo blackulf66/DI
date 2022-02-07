@@ -10,29 +10,10 @@ import 'package:http/http.dart' as http;
 
 import 'package:intl/intl.dart';
 
-void main() {
-  runApp(const Principal());
-}
-
-class Principal extends StatelessWidget {
-  const Principal({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
+import 'searchPage.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -46,7 +27,7 @@ class _MyHomePageState extends State<MyHomePage> {
   late Future<List<Hourly>> items2;
 
   String convertedDateTime =
-      "${DateTime.now().year.toString()}-${DateTime.now().month.toString().padLeft(2, '0')}-${DateTime.now().day.toString().padLeft(2, '0')} ${DateTime.now().hour.toString().padLeft(2, '0')}-${DateTime.now().minute.toString().padLeft(2, '0')}";
+      "${DateTime.now().year.toString()}-${DateTime.now().month.toString().padLeft(2, '0')}-${DateTime.now().day.toString().padLeft(2, '0')}";
 
   @override
   void initState() {
@@ -64,34 +45,55 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox(
+       appBar: AppBar(
+      backgroundColor: Style.moradomenu, title: Container(
+        width: double.infinity,
+        height: 40,
+        decoration: BoxDecoration(
+            color: Colors.white, borderRadius: BorderRadius.circular(5)),
+        child: Center(
+          child: TextField(
+            decoration: InputDecoration(
+                prefixIcon: Icon(Icons.search),
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.clear),
+                  onPressed: () {
+                  },
+                ),
+                hintText: 'buscar...',
+                border: InputBorder.none),
+          ),
+        ),
+      )),
+      body: SingleChildScrollView(
         child: FutureBuilder<WeatherResponse>(
             future: items,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return Column(
                   children: [
-                    Center(
-                      child: Padding(
-                          padding: const EdgeInsets.only(top: 120),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20),
                           child: RichText(
-                            text: TextSpan(
-                              children: <TextSpan>[
-                                TextSpan(
-                                    text: snapshot.data!.name,
-                                    style: const TextStyle(
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.bold)),
-                                TextSpan(
-                                    text:
-                                        '  ${snapshot.data!.main.temp.toInt()}'
-                                        ' º',
-                                    style: const TextStyle(
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.bold)),
-                              ],
-                            ),
+                              text: TextSpan( 
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: snapshot.data!.name,
+                                  style: const TextStyle(
+                                      fontSize: 30, fontWeight: FontWeight.bold)),
+                              TextSpan(
+                                text: '  ${snapshot.data!.main.temp.toInt()}'
+                                    ' º',
+                                style: const TextStyle(
+                                    fontSize: 30, fontWeight: FontWeight.bold),
+                              ),
+                            ],
                           )),
+                        ),
+                      ],
                     ),
                     Center(
                       child: Padding(
@@ -102,8 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               TextSpan(
                                   text: convertedDateTime,
                                   style: const TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.bold)),
+                                      fontSize: 14, fontWeight: FontWeight.bold)),
                             ],
                           ),
                         ),
@@ -111,11 +112,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     Center(
                       child: Padding(
-                        padding: const EdgeInsets.all(50.0),
+                        padding: const EdgeInsets.all(20.0),
                         child: SizedBox(
                             width: 130,
-                            child:
-                                Image.network(snapshot.data!.weather[0].icon)),
+                            child: Image.network(
+                                'http://openweathermap.org/img/wn/${snapshot.data!.weather[0].icon}@2x.png')),
                       ),
                     ),
                     Padding(
@@ -132,10 +133,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                   text: const TextSpan(
                                     children: <TextSpan>[
                                       TextSpan(
-                                          text: 'Precipitaciones',
-                                          style: TextStyle(
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.bold)),
+                                        text: 's.Termica',
+                                        style: TextStyle(
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.bold),
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -144,8 +146,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                 text: TextSpan(
                                   children: <TextSpan>[
                                     TextSpan(
-                                        text: '${snapshot.data!.main.feelsLike}'
-                                            '%',
+                                        text:
+                                            '${snapshot.data!.main.feelsLike.toInt()} º ',
                                         style: const TextStyle(
                                             fontSize: 17,
                                             fontWeight: FontWeight.bold)),
@@ -232,12 +234,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(
-                          height: 500,
+                          height: 170,
                           child: FutureBuilder<List<Hourly>>(
                               future: items2,
                               builder: (context, snapshot) {
                                 if (snapshot.hasData) {
-                                  return _ListOfWeather(snapshot.data!);
+                                  return _ListOfWeather(snapshot.data!, context);
                                 } else if (snapshot.hasError) {
                                   return Text('${snapshot.error}');
                                 }
@@ -265,42 +267,24 @@ class _MyHomePageState extends State<MyHomePage> {
               Icons.home,
               color: Style.azuliconomenu,
             ),
-            label: 'Home',
-            backgroundColor: Style.moradomenu,
+            label: 'Tierra',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.business,
               color: Style.azuliconomenu,
             ),
-            label: 'Business',
-            backgroundColor: Style.moradomenu,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.school,
-              color: Style.azuliconomenu,
-            ),
-            label: 'School',
-            backgroundColor: Style.moradomenu,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.settings,
-              color: Style.azuliconomenu,
-            ),
-            label: 'Settings',
-            backgroundColor: Style.moradomenu,
+            label: 'Marte',
           ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.white,
         onTap: _onItemTapped,
+        backgroundColor: Style.moradomenu,
       ),
       backgroundColor: Style.colordefondo,
     );
   }
-
   Future<WeatherResponse> fetchWeather() async {
     final response = await http.get(Uri.parse(
         'https://api.openweathermap.org/data/2.5/weather?lat=37.3754338&lon=-5.9900776&appid=e6355afab996c365828cab0806e44520&units=metric'));
@@ -313,7 +297,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<List<Hourly>> fetchHoras() async {
     final response = await http.get(Uri.parse(
-        'https://api.openweathermap.org/data/2.5/onecall?lat=37.3754338&lon=-5.9900776&exclude={part}&appid=f28e837e4595cfac202f03b29b52beca'));
+        'https://api.openweathermap.org/data/2.5/onecall?lat=37.3754338&lon=-5.9900776&exclude={part}&appid=f28e837e4595cfac202f03b29b52beca&units=metric'));
     if (response.statusCode == 200) {
       return HorasResponse.fromJson(jsonDecode(response.body)).hourly;
     } else {
@@ -323,38 +307,56 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 // ignore: non_constant_identifier_names
-Widget _ListOfWeather(List<Hourly> List) {
-  return ListView.builder(
-    scrollDirection: Axis.horizontal,
-    itemCount: List.length,
-    itemBuilder: (context, index) {
-      return _Item(List.elementAt(index), index);
-    },
+Widget _ListOfWeather(List<Hourly> List, BuildContext context) {
+  return SizedBox(
+    width:MediaQuery.of(context).size.width,
+    child: ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: List.length,
+      itemBuilder: (context, index) {
+        return _Item(List.elementAt(index), index);
+      },
+    ),
   );
 }
 
 // ignore: non_constant_identifier_names
 Widget _Item(Hourly loca, int index) {
+  var date = DateTime.fromMillisecondsSinceEpoch(loca.dt * 1000);
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Card(
-      shadowColor: Colors.black,
-      elevation: 200,
+      elevation:20,
       color: Colors.transparent,
       child: InkWell(
         splashColor: Colors.purple.withAlpha(30),
         onTap: () {
           debugPrint('Card tapped.');
         },
-        child: const SizedBox(
-          width: 100,
-          height: 130,
-          child: Text('A card that can be tapped',
-              style: TextStyle(color: Colors.white)),
+        child: Padding(
+          padding: const EdgeInsets.all(1.0),
+          child: Column(
+            children: [
+              Image.network('http://openweathermap.org/img/wn/${loca.weather[0].icon}@2x.png'),
+              SizedBox(
+                width: 120,
+                child: Text(loca.temp.toInt().toString()+" º",
+                    style: const TextStyle(color: Colors.white)),
+              ),
+              SizedBox(
+            width: 120,
+            child: Text(date.hour.toString()+':'+date.minute.toString()+'0:'+date.second.toString( )+'0' ,
+                style: const TextStyle(color: Colors.white)),
+          ),
+            ],
+             
+          ),
         ),
+        
+        
+
       ),
     ),
   );
 }
-
 //f28e837e4595cfac202f03b29b52beca api key;
