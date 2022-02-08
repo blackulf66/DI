@@ -61,9 +61,25 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/nublado.png
+    - assets/images/icons/01d.png
+    - assets/images/icons/02d.png
+    - assets/images/icons/03d.png
+    - assets/images/icons/04d.png
+    - assets/images/icons/09d.png
+    - assets/images/icons/11d.png
+    - assets/images/icons/13d.png
+    - assets/images/icons/55d.png
+    - assets/images/icons/01n.png
+    - assets/images/icons/02n.png
+    - assets/images/icons/03n.png
+    - assets/images/icons/04n.png
+    - assets/images/icons/09n.png
+    - assets/images/icons/11n.png
+    - assets/images/icons/13n.png
+    - assets/images/icons/55n.png
+    - assets/images/icons/10d.png
+    - assets/images/icons/10n.png
     
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
