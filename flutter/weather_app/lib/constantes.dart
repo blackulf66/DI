@@ -6,3 +6,5 @@ static Color moradomenu = const Color.fromRGBO(39, 16, 57, 1);
 static Color colordefondo = const Color.fromRGBO(125, 68, 131, 1);
 
 }
+
+const String PREF_TOKEN = "PREF_TOKEN";
