@@ -7,7 +7,7 @@ import 'package:weather_app/pages/pagina_Tiempo.dart';
 import 'package:weather_app/pages/pantallaSeleccionMapa.dart';
 import 'package:weather_app/preference.dart';
 
-import 'constantes.dart';
+import 'constantes.dart'  as util;
 import 'models/weather_model.dart';
 
 import 'package:http/http.dart' as http;
@@ -29,6 +29,9 @@ class _MyHomePageState extends State<MyHomePage> {
   late Future<List<Hourly>> items2;
 
   late Future<List<Daily>> items3;
+  
+  final myController = TextEditingController();
+
 
   String convertedDateTime =
       "${DateTime.now().year.toString()}-${DateTime.now().month.toString().padLeft(2, '0')}-${DateTime.now().day.toString().padLeft(2, '0')}";
@@ -58,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Style.moradomenu,
+          backgroundColor: util.Style.moradomenu,
           title: Container(
             width: double.infinity,
             height: 40,
@@ -66,6 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Colors.white, borderRadius: BorderRadius.circular(5)),
             child: Center(
               child: TextField(
+                controller: myController,
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.search),
                     suffixIcon: IconButton(
@@ -77,36 +81,68 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           )),
-      body: Center(
+          
+      body:Stack(
+  children: <Widget>[
+
+    Container(
+  decoration:  BoxDecoration(
+    gradient:  LinearGradient(
+      begin: Alignment.topCenter,
+      end: const Alignment(0.0, 1.0), // 10% of the width, so there are ten blinds.
+      colors: <Color>[
+        util.Style.colordefondo,
+        Colors.black,
+      ], // red to yellow
+      tileMode: TileMode.repeated, // repeats the gradient over the canvas
+    ),
+  ),
+),
+     Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
+    
+  ],
+),
 
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
-              color: Style.azuliconomenu,
+              color: util.Style.azuliconomenu,
             ),
-            label: 'Tierra',
+            label: 'Tiempo',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.business,
-              color: Style.azuliconomenu,
+              Icons.map,
+              color: util.Style.azuliconomenu,
             ),
-            label: 'Marte',
+            label: 'Mapa',
           ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.white,
         onTap: _onItemTapped,
-        backgroundColor: Style.moradomenu,
+        backgroundColor: util.Style.moradomenu,
+        
       ),
-      backgroundColor: Style.colordefondo,
+      
+      backgroundColor: util.Style.colordefondo,
     );
   }
 }
 //f28e837e4595cfac202f03b29b52beca api key;
+
+Future<Map> getweather(String myController) async {
+  myController = myController;
+    var apiUrl =
+        'http://api.openweathermap.org/data/2.5/weather?q=${myController.toString()}&appid=f28e837e4595cfac202f03b29b52beca&units=metric';
+
+    http.Response response = await http.get(Uri.parse(apiUrl));
+    return json.decode(response.body);
+  }
+
 
 

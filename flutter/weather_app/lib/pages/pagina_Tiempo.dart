@@ -30,11 +30,11 @@ class _PaginaTiempo extends State<PaginaTiempo> {
 
   late Future<List<Daily>> items3;
 
-  late double latSeleccionada = 37.3754338;
+  double latSeleccionada = 37.3754338;
 
-  late double longSeleccionada = -5.9900776;
+  double longSeleccionada = -5.9900776;
 
-   String convertedDateTime =
+  String convertedDateTime =
       "${DateTime.now().year.toString()}-${DateTime.now().month.toString().padLeft(2, '0')}-${DateTime.now().day.toString().padLeft(2, '0')}";
 
 

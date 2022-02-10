@@ -1,7 +1,13 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PreferenceUtils {
- 
+
+ @override
+  void initState() {
+    _prefs;
+  
+  }
+
   static late SharedPreferences _prefs;
 
   // call this method from iniState() function of mainApp().
