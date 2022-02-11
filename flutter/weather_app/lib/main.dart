@@ -6,7 +6,6 @@ void main() {
   runApp(const MyApp());
 }
 
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
@@ -24,5 +23,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 //f28e837e4595cfac202f03b29b52beca api key

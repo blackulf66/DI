@@ -39,9 +39,12 @@ class _MyHomePageState extends State<MyHomePage> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
-    PaginaTiempo(),
 
     MapClickPage(),
+
+    PaginaTiempo(),
+
+    
     
   ];
 
@@ -89,12 +92,12 @@ class _MyHomePageState extends State<MyHomePage> {
   decoration:  BoxDecoration(
     gradient:  LinearGradient(
       begin: Alignment.topCenter,
-      end: const Alignment(0.0, 1.0), // 10% of the width, so there are ten blinds.
+      end: const Alignment(0.0, 1.0), 
       colors: <Color>[
         util.Style.colordefondo,
         Colors.black,
-      ], // red to yellow
-      tileMode: TileMode.repeated, // repeats the gradient over the canvas
+      ], 
+      tileMode: TileMode.repeated, 
     ),
   ),
 ),
@@ -109,17 +112,17 @@ class _MyHomePageState extends State<MyHomePage> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home,
-              color: util.Style.azuliconomenu,
-            ),
-            label: 'Tiempo',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
               Icons.map,
               color: util.Style.azuliconomenu,
             ),
             label: 'Mapa',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+              color: util.Style.azuliconomenu,
+            ),
+            label: 'Tiempo',
           ),
         ],
         currentIndex: _selectedIndex,

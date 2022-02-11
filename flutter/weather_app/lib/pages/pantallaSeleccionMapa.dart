@@ -7,6 +7,8 @@ import 'package:weather_app/preference.dart';
  CameraPosition _kInitialPosition =
     CameraPosition(target: LatLng(37.3754865, -5.9250989), zoom: 11.0);
 
+    LatLng _lastTap = LatLng(37.3754865, -5.9250989);
+
 class MapClickPage extends GoogleMapExampleAppPage {
   const MapClickPage() : super(const Icon(Icons.mouse), 'Map click');
 
@@ -27,7 +29,7 @@ class _MapClickBodyState extends State<_MapClickBody> {
   _MapClickBodyState();
 
   GoogleMapController? mapController;
-  LatLng _lastTap = LatLng(37.3754865, -5.9250989);
+  
   LatLng? _lastLongPress;
 
   coor() async{
@@ -36,7 +38,7 @@ class _MapClickBodyState extends State<_MapClickBody> {
       double? lng = PreferenceUtils.getDouble('lng');
 
       _lastTap = LatLng(lat!, lng!);
-      _kInitialPosition = CameraPosition(target: _lastTap , zoom: 10.0);
+      _kInitialPosition = CameraPosition(target: _lastTap , zoom: 5.0);
 
     }else {
       _kInitialPosition = const CameraPosition(target: LatLng(37.3754865, -5.9250989), zoom: 11.0);
@@ -48,12 +50,14 @@ class _MapClickBodyState extends State<_MapClickBody> {
   @override
   void initState() {
     coor();
+    PreferenceUtils.init().whenComplete(() => setState((){}));
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     final GoogleMap googleMap = GoogleMap(
+      mapType:MapType.hybrid,
       onMapCreated: onMapCreated,
       initialCameraPosition: _kInitialPosition,
       onTap: (LatLng pos) async {
@@ -74,13 +78,13 @@ class _MapClickBodyState extends State<_MapClickBody> {
 
     final List<Widget> columnChildren = <Widget>[
       Padding(
-        padding: const EdgeInsets.only(top: 30.0),
+        padding: const EdgeInsets.only(top: 0.0),
         child: Column(
           children: [
             Center(
               child: SizedBox(
-                width: MediaQuery.of(context).size.width -20,
-                height: MediaQuery.of(context).size.height -300,
+                width: MediaQuery.of(context).size.width ,
+                height: MediaQuery.of(context).size.height -175 ,
                 
                 child: googleMap,
     
@@ -101,12 +105,14 @@ class _MapClickBodyState extends State<_MapClickBody> {
   void onMapCreated(GoogleMapController controller) async {
     
     setState(() {
+      coor();
       mapController = controller;
     });
     
   }
   Marker _createMarker() {
       return Marker(
+        
         markerId: MarkerId("marker_1"),
         position: _lastTap,
       );

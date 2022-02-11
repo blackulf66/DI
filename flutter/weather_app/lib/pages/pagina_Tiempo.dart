@@ -6,6 +6,7 @@ import 'package:weather_app/models/horas_model.dart';
 import 'package:weather_app/models/weather_model.dart';
 
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:weather_app/pages/pantallaSeleccionMapa.dart';
 import 'package:weather_app/preference.dart';
 
 import '../models/weather_model.dart';
@@ -45,6 +46,8 @@ class _PaginaTiempo extends State<PaginaTiempo> {
     items3 = fetchDias();
     PreferenceUtils.init();
     super.initState();
+    
+
   }
 
 
@@ -60,27 +63,47 @@ class _PaginaTiempo extends State<PaginaTiempo> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 20),
-                          child: RichText(
-                              text: TextSpan(
-                            children: <TextSpan>[
-                              TextSpan(
-                                  text: snapshot.data!.name,
-                                  style: const TextStyle(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold)),
-                              TextSpan(
-                                text: '  ${snapshot.data!.main.temp.toInt()}'
-                                    ' º',
-                                style: const TextStyle(
-                                    fontSize: 30, fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          )),
-                        ),
+                       
+
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: RichText(
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                  text: TextSpan(
+                                children: <TextSpan>[
+                                  TextSpan(
+                                      text: snapshot.data!.name,
+                                      style: const TextStyle(
+                                          fontSize: 30,
+                                          fontWeight: FontWeight.bold)),
+                                  
+                                ],
+                              )),
+                            ),
+                          ),
+
+          
                       ],
                     ),
+                    Column(children: [
+
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                                      '  ${snapshot.data!.main.temp.toInt()}'
+                                          ' º',
+                                      style: const TextStyle(
+                                          fontSize: 50, fontWeight: FontWeight.bold , color: Colors.white),
+                                    ),
+                        ),
+                      ),
+                          
+                    ],),
                     Center(
                       child: Padding(
                         padding: const EdgeInsets.only(top: 10),
