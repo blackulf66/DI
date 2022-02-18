@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_miarmapp/models/post_model.dart';
 import 'package:flutter_miarmapp/providers/posts_provider.dart';
+import 'package:fluttericon/typicons_icons.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -18,29 +19,20 @@ class _HomeScreenState extends State<HomeScreen> {
     return  Scaffold(
       backgroundColor: Color(0xFFF9F9F9),  
       appBar:AppBar(
-      bottom: PreferredSize(
-        preferredSize: Size.fromHeight(0.5),
-        child: Container(
-          color: Colors.black38,
-          height: 0.75,
-        ),
-      ),
-      elevation: 0,
+      
       backgroundColor: Color(0xFFF9F9F9),  
-      brightness: Brightness.light,
-      centerTitle: true,
       title: Container(
-        margin: EdgeInsets.only(top: 10.0),
         child: SizedBox(
-          height: 40.0,
-          child: Image.asset('assets/img/logo-instagram.png')
+          height: 30.0,
+          child: Text("miarmagram", style: TextStyle(color: Colors.black),)
         ),
       ) ,     
-      leading: IconButton(
-        onPressed: (){},
-        icon: Icon(Icons.camera, color: Colors.black, size: 30.0 ),
-      ),
+      
       actions: <Widget>[
+        IconButton(
+          onPressed: (){},
+          icon: Icon( Icons.h_plus_mobiledata , color: Colors.black ,size: 28.0 ),
+        ),
         IconButton(
           onPressed: (){},
           icon: Icon( Icons.tv , color: Colors.black ,size: 28.0 ),
@@ -54,39 +46,26 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            _labels(),                
+            _parteabajo(),                
             Divider(color: Colors.grey, thickness: 0.5 , height: 0.0),
-            _posts(),
+            _postsList(),
           ],
         ),          
       ),       
     );
   }
 
-  Widget _labels() {
+  Widget _parteabajo() {
     return Container(
-      margin: EdgeInsets.only( top: 5.0, left: 15.0, right: 15.0 ),
-      //margin: EdgeInsets.symmetric(horizontal: 15.0),
+      margin: EdgeInsets.only( top: 5.0, left: 14.0, right: 14.0 ),
       child: Row(
-        // crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Text('Stories', style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold)),
-          Row(                   
-            children: <Widget>[                        
-              GestureDetector(
-                onTap: (){},
-                child: Icon(Icons.arrow_right)
-              ),
-              Text('Watch All', style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold)),
-            ],
-          )
-        ],
+       
       ),
     );
   }
 
-  Widget _posts(){
+  Widget _postsList(){
 
     return Container(
       width: MediaQuery.of(context).size.width,
@@ -95,30 +74,30 @@ class _HomeScreenState extends State<HomeScreen> {
         physics: NeverScrollableScrollPhysics() ,
         itemCount: postProvider.getPosts().length,
         itemBuilder: (context , i){
-          return _createPost( postProvider.getPosts()[i] ) ;                         
+          return _Post( postProvider.getPosts()[i] ) ;                         
         },
-      ),
+      ),  
     );
   }
 
-  Widget _createPost( Post post ){
+  Widget _Post( Post post ){
 
     List<Widget> userLikes = [];
-    userLikes.add( Text( 'Liked by ' ) );
+    userLikes.add( Text('le gusta a') );
 
     int count = 1;
     int qtyUserLikes = post.topsLikes.length;
 
     post.topsLikes.forEach(( user ) {
       Widget _temp = Text( 
-        count != qtyUserLikes ? user + ", " : user,
+        count != qtyUserLikes ? user + "," : user,
         style: TextStyle( 
           fontWeight:  FontWeight.bold
         ),  
       );
       userLikes.add(_temp);
-      count == qtyUserLikes ? userLikes.add( Text( ' and  ') ) : null ;
-      count == qtyUserLikes ? userLikes.add( Text( '${post.likes} others' , style: TextStyle( fontWeight: FontWeight.bold , fontSize: 18.0))) : null ;
+      count == qtyUserLikes ? userLikes.add(Text(' y ')) : null ;
+      count == qtyUserLikes ? userLikes.add(Text('${post.likes} personas mas', style: TextStyle( fontWeight: FontWeight.bold , fontSize: 18.0))) : null ;
       count++;
     });
 
@@ -127,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         children: <Widget>[
 
-          Container( //POST USER
+          Container(
             color: Colors.white,
             child: Row(              
               children: <Widget>[
@@ -135,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                   padding: EdgeInsets.only(top: 12.0 , left: 18.0, bottom: 12.0, right: 12.0 ),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(50.0),
+                    borderRadius:BorderRadius.circular(50.0),
                     child: Image(
                       image: NetworkImage( post.userPhoto ),
                       height: 45.0,
@@ -155,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Expanded(child: SizedBox()),
 
                 IconButton(
-                  icon: Icon( Icons.more_horiz ),
+                  icon: Icon( Icons.more_vert ),
                   iconSize: 30.0,
                   onPressed: (){},
                 ),                
@@ -163,12 +142,12 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
 
-          FadeInImage( //POST IMAGE
+          Image(
             image: NetworkImage( post.postPhoto ),
-            placeholder: AssetImage('assets/img/loading.gif'),
+
           ),
 
-          Container( //ICONS ACTIONS
+          Container( 
             padding: EdgeInsets.only(top:5.0, left: 7.0, right: 7.0, bottom: 0.0),
             color: Colors.white,
             child: Row(
@@ -177,51 +156,40 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 Row(
                   children: <Widget>[
-                    IconButton(
-                      icon: Image(
-                        image: AssetImage('assets/img/heart.png'),
-                        width: 30.0,
-                      ),
-                      onPressed: (){},
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(Typicons.heart),
                     ),
-                    IconButton(
-                      icon: Image(
-                        image: AssetImage('assets/img/comment.png'),
-                        width: 28.0,
-                      ),
-                      onPressed: (){},
-                    ),
-                    IconButton(
-                      icon: Image(
-                        image: AssetImage('assets/img/send.png'),
-                        width: 29.0,
-                      ),
-                      onPressed: (){},
-                    )
+        
+                     Padding(
+                       padding: const EdgeInsets.all(8.0),
+                       child: Icon(Typicons.comment),
+                     ),
+                     
+                     Padding(
+                       padding: const EdgeInsets.all(8.0),
+                       child: Icon(Typicons.search_outline),
+                     ),
                   ],
                 ),
 
-                IconButton(
-                  icon: Image(
-                    image: AssetImage('assets/img/save_o.png'),
-                    width: 27.0,
-                  ),
-                  onPressed: (){},
-                )
-                               
+                 Padding(
+                   padding: const EdgeInsets.all(8.0),
+                   child: Icon(Typicons.star),
+                 ),    
               ],
             ),
           ),
           
-          Container( // USER LIKES
+          Container(
             padding: EdgeInsets.only(left: 17.0, right: 17.0 , bottom: 10.0  ),
             color: Colors.white,
             child: Row(
-              children:  userLikes,              
+              children: userLikes,              
             ),          
           ),
 
-          Container( // CAPTION            
+          Container(           
             color: Colors.white,
             width: double.infinity,            
             padding: EdgeInsets.only(left: 17.0, right: 17.0 , bottom: 10.0  ),
@@ -239,7 +207,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                           fontSize: 15.0
-                        )                  
+                        )           
                       ),
                       TextSpan(
                         text: "${post.caption} ",
@@ -250,24 +218,28 @@ class _HomeScreenState extends State<HomeScreen> {
                     ]
                   ),
                 ),
+                 Text(
+                        "ver los ${post.comentarios} comentarios",
+                        style: TextStyle(
+                          color: Colors.grey                      
+                        )                  
+                      ),
 
                 Container(
+                  
                   alignment: Alignment.topLeft,
                   margin: EdgeInsets.symmetric(vertical : 10.0),
                   child: Text( 
-                    post.date , 
-                    style: TextStyle( 
+                    post.date , style: TextStyle( 
                       color: Colors.grey,
-                      fontSize: 18.0
+                      fontSize: 13.0
                     ),
                   )
                 )
               ],
             )
             
-            
-            //Text( "${post.userName} ${post.caption}", maxLines: 2, overflow: TextOverflow.ellipsis, textAlign: TextAlign.justify, )           
-          ),
+                      ),
         ],
       ),
     );

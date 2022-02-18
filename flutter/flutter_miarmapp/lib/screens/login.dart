@@ -142,38 +142,43 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ):
-                  Container(
-                    width: deviseWidth * .90,
-                    height: deviseWidth * .14,
-                    decoration: BoxDecoration(
-                      color: Color(0xff78C9FF),
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Log In',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: deviseWidth * .040,
-                          fontWeight: FontWeight.bold,
+                  InkWell(
+                    child: Container(
+                      width: deviseWidth * .90,
+                      height: deviseWidth * .14,
+                      decoration: BoxDecoration(
+                        color: Color(0xff78C9FF),
+                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Log In',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: deviseWidth * .040,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
+                    onTap: (){
+                      Navigator.pushNamed(context, '/');
+                    },
                   ),
                   SizedBox(height: deviseWidth * .035,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Forgot your login details? ',
+                      Text('olvidaste tus datos de logi? ',
                       style: TextStyle(
                         fontSize: deviseWidth * .035,
                       ),
                       ),
                       GestureDetector(
                         onTap: (){
-                          print('Get help');
+                          print('ayudame');
                         },
-                        child: Text('Get help',
+                        child: Text('ayudame',
                         style: TextStyle(
                           fontSize: deviseWidth * .035,
                           color: Color(0xff002588),
@@ -193,7 +198,7 @@ class _LoginPageState extends State<LoginPage> {
                         color: Color(0xffA2A2A2),
                       ),
                       SizedBox(width: 10,),
-                      Text('OR',
+                      Text('O',
                       style: TextStyle(
                         fontSize: deviseWidth * .040,
                       ),

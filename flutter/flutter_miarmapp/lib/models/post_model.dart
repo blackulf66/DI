@@ -5,6 +5,7 @@ class Post{
   final String postPhoto;
   final String caption;
   final String date;
+  final int comentarios;
   final int likes;
   final List<String> topsLikes;
 
@@ -14,6 +15,7 @@ class Post{
     required this.postPhoto,
     required this.caption,
     required this.date,
+    required this.comentarios,
     required this.likes,
     required this.topsLikes
   });

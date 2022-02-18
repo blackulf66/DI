@@ -9,65 +9,72 @@ class PostProvider{
     posts = [
       new Post(
         userName: "SibylWalker",
-        userPhoto: "https://s3.amazonaws.com/uifaces/faces/twitter/kevinjohndayy/128.jpg",
+        userPhoto: "https://icones.pro/wp-content/uploads/2021/04/icone-cercle-rempli-noir.png",
         caption: "Suscipit sit dolores asperiores quia. Commodi nostrum sit ipsam voluptate corporis ipsa nisi ut. Vel tempora eos cumque sint maxime exercitationem. Ratione dolore rerum placeat repellat ad deserunt mollitia in. Provident at voluptas minima qui voluptas. Pariatur dolores perferendis earum voluptatem eius assumenda quam.",
-        postPhoto: "https://images.pexels.com/photos/733853/pexels-photo-733853.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        postPhoto: "https://static.wikia.nocookie.net/batman/images/7/76/TB_p%C3%B3ster_01.png/revision/latest?cb=20211016222218&path-prefix=es",
         date: "July 1",
         likes: 1180,
+        comentarios: 2000,
         topsLikes: ["Jennifer","Sigmund"]
       ),
        new Post(
         userName: "ChelseaSkiles",
-        userPhoto: "https://s3.amazonaws.com/uifaces/faces/twitter/_kkga/128.jpg",
+        userPhoto: "https://icones.pro/wp-content/uploads/2021/04/icone-cercle-rempli-noir.png",
         caption: "Repellat laborum sit id.",
-        postPhoto: "https://images.pexels.com/photos/827209/pexels-photo-827209.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        postPhoto: "https://cdn.pocket-lint.com/r/s/1200x/assets/images/151737-games-feature-batman-games-in-order-how-to-play-the-arkham-series-and-more-image1-m8vygjidfb.jpg",
         date: "July 2",
         likes: 150,
+        comentarios: 1000,
         topsLikes: ["Wyman","Mozelle"]
       ),
       new Post(
         userName: "PaxtonKautzer",
-        userPhoto: "https://s3.amazonaws.com/uifaces/faces/twitter/conspirator/128.jpg",
+        userPhoto: "https://icones.pro/wp-content/uploads/2021/04/icone-cercle-rempli-noir.png",
         caption: "Est dolor sit in tempore perferendis qui tenetur est voluptas. Qui qui repudiandae. Repellat aut suscipit velit dolorum voluptas aut sit. Magni illum non ut quis est quibusdam. Consequuntur et consequatur est nesciunt.",
-        postPhoto: "https://images.pexels.com/photos/597049/paris-france-eiffel-tower-597049.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        postPhoto: "https://pics.filmaffinity.com/Spider_Man_No_Way_Home-642739124-large.jpg",
         date: "July 4",
         likes: 252,
+        comentarios: 4000,
         topsLikes: ["Braulio","Dawn"]
       ),
       new Post(
         userName: "KaitlynMacejkovic",
-        userPhoto: "https://s3.amazonaws.com/uifaces/faces/twitter/jacobbennett/128.jpg",
+        userPhoto: "https://icones.pro/wp-content/uploads/2021/04/icone-cercle-rempli-noir.png",
         caption: "Dolores aspernatur labore reprehenderit dolorem magni est tenetur. Necessitatibus enim sunt nemo laborum. Aut repellat ad ea pariatur eos. Quo aliquam eos minus aut eum rerum veritatis voluptas.",
-        postPhoto: "https://images.pexels.com/photos/747964/pexels-photo-747964.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        postPhoto: "https://i0.wp.com/hipertextual.com/wp-content/uploads/2021/09/spider-man-2-scaled.jpg?fit=1200%2C755&ssl=1",
         date: "July 7",
         likes: 856,
+        comentarios: 52000,
         topsLikes: ["Koby","Evan"]
       ),
       new Post(
         userName: "HoracioMarks",
-        userPhoto: "https://s3.amazonaws.com/uifaces/faces/twitter/keyuri85/128.jpg",
+        userPhoto: "https://icones.pro/wp-content/uploads/2021/04/icone-cercle-rempli-noir.png",
         caption: "Inventore maiores eaque rerum debitis accusantium.",
-        postPhoto: "https://images.pexels.com/photos/247298/pexels-photo-247298.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        postPhoto: "https://pm1.narvii.com/7951/7c96680293d0d5a69fb930b520891ce641f22364r1-844-1055v2_hq.jpg",
         date: "July 7",
         likes: 506,
+        comentarios: 666,
         topsLikes: ["Constance","Euna"]
       ),
       new Post(
         userName: "MittieStrosin",
-        userPhoto: "https://s3.amazonaws.com/uifaces/faces/twitter/posterjob/128.jpg",
+        userPhoto: "https://icones.pro/wp-content/uploads/2021/04/icone-cercle-rempli-noir.png",
         caption: "Et eaque enim est voluptas omnis quo totam perferendis hic.",
-        postPhoto: "https://images.pexels.com/photos/413885/pexels-photo-413885.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        postPhoto: "https://wallpaperaccess.com/full/3706815.jpg",
         date: "July 2",
         likes: 1523,
+        comentarios: 777,
         topsLikes: ["Constantin","Sheridan"]
       ),
       new Post(
         userName: "StephanieSpinka",
-        userPhoto: "https://s3.amazonaws.com/uifaces/faces/twitter/andrewabogado/128.jpg",
+        userPhoto: "https://icones.pro/wp-content/uploads/2021/04/icone-cercle-rempli-noir.png",
         caption: "Officia est dolor est aut autem quia.",
-        postPhoto: "https://images.pexels.com/photos/3957987/pexels-photo-3957987.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        postPhoto: "https://preview.redd.it/t8yuzzjq3gh81.jpg?width=640&crop=smart&auto=webp&s=b5b5abbeec76211b55234d33d30e8dcefe217dff",
         date: "July 5",
         likes: 856,
+        comentarios: 0,
         topsLikes: ["Deontae","Eulalia"]
       )      
     ];
