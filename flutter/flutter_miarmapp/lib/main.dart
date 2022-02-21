@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_miarmapp/screens/login.dart';
 import 'package:flutter_miarmapp/screens/menu_screen.dart';
+import 'package:flutter_miarmapp/screens/profile_screen.dart';
 import 'package:flutter_miarmapp/screens/register_screen.dart';
 
 void main() {
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
     '/': (context) => const MenuScreen(),
     '/login': (context) => LoginPage(),
     '/register': (context) => const RegisterScreen(),
+    '/profile':(context) => const ProfileScreen(),
   },
     );
   }

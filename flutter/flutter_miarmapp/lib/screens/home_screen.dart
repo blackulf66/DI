@@ -21,10 +21,11 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar:AppBar(
       
       backgroundColor: Color(0xFFF9F9F9),  
-      title: Container(
+      title: Padding(
+        padding: const EdgeInsets.only(right:10.0),
         child: SizedBox(
           height: 30.0,
-          child: Text("miarmagram", style: TextStyle(color: Colors.black),)
+          child: Image.asset("assets/images/logo_miarmapp.png")
         ),
       ) ,     
       

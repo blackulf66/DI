@@ -38,9 +38,11 @@ class _LoginPageState extends State<LoginPage> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('assets/images/instagram_logo.png',
-                  height: deviseWidth * .20,
-                  ),
+                 
+                  Image.asset('assets/images/logo_miarmapp.png',width: deviseWidth * .20,
+                    height: deviseWidth * .20,
+                    ),
+                
                   SizedBox(height: deviseWidth * .05,),
                   Container(
                     width: deviseWidth * .90,
@@ -67,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                             fontSize: deviseWidth * .040,
                           ),
                           decoration: InputDecoration.collapsed(
-                            hintText: 'Phone number , email or username',
+                            hintText: 'numero de telefono , email o nombre de usuario',
                           ),
                         ),
                       ),
@@ -100,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                             fontSize: deviseWidth * .040,
                           ),
                           decoration: InputDecoration.collapsed(
-                            hintText: 'Password',
+                            hintText: 'contraseña',
                           ),
                         ),
                       ),
@@ -169,7 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('olvidaste tus datos de logi? ',
+                      Text('olvidaste tus datos de login? ',
                       style: TextStyle(
                         fontSize: deviseWidth * .035,
                       ),

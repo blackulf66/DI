@@ -72,8 +72,8 @@ class _MenuScreenState extends State<MenuScreen> {
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(100), border: Border.all(color: _currentIndex == 2? Colors.black: Colors.transparent, width: 1)),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100),
-                  child: Image.asset(
-                      'assets/images/avatar.jpeg',
+                  child: Image.network(
+                      'https://img.ecartelera.com/noticias/33100/33103-m.jpg',
                       width: 30,
                     ),
                 ),
