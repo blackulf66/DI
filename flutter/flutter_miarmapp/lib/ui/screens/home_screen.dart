@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_miarmapp/models/postApi_model.dart';
 import 'package:flutter_miarmapp/models/post_model.dart';
 import 'package:flutter_miarmapp/providers/posts_provider.dart';
 import 'package:fluttericon/typicons_icons.dart';
@@ -81,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _Post( Post post ){
+  Widget _Post(Post post ){
 
     List<Widget> userLikes = [];
     userLikes.add( Text('le gusta a') );
@@ -237,6 +238,129 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   )
                 )
+              ],
+            )
+            
+                      ),
+        ],
+      ),
+    );
+
+  }
+
+  Widget _Postv2(PostApiResponse post ){
+
+
+    return Container(
+      child: Column(
+        children: <Widget>[
+
+          Container(
+            color: Colors.white,
+            child: Row(              
+              children: <Widget>[
+
+                Container(
+                  padding: EdgeInsets.only(top: 12.0 , left: 18.0, bottom: 12.0, right: 12.0 ),
+                  child: ClipRRect(
+                    borderRadius:BorderRadius.circular(50.0),
+                    child: Image(
+                      image: NetworkImage( post.imagen ),
+                      height: 45.0,
+                      width: 45.0,
+                    ),
+                  ),
+                ),
+
+                Text( 
+                  post.username,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16.0
+                  ),
+                ),
+
+                Expanded(child: SizedBox()),
+
+                IconButton(
+                  icon: Icon( Icons.more_vert ),
+                  iconSize: 30.0,
+                  onPressed: (){},
+                ),                
+              ],
+            ),
+          ),
+
+          Image(
+            image: NetworkImage( post.imagen ),
+
+          ),
+
+          Container( 
+            padding: EdgeInsets.only(top:5.0, left: 7.0, right: 7.0, bottom: 0.0),
+            color: Colors.white,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+
+                Row(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(Typicons.heart),
+                    ),
+        
+                     Padding(
+                       padding: const EdgeInsets.all(8.0),
+                       child: Icon(Typicons.comment),
+                     ),
+                     
+                     Padding(
+                       padding: const EdgeInsets.all(8.0),
+                       child: Icon(Typicons.search_outline),
+                     ),
+                  ],
+                ),
+
+                 Padding(
+                   padding: const EdgeInsets.all(8.0),
+                   child: Icon(Typicons.star),
+                 ),    
+              ],
+            ),
+          ),
+          
+
+          Container(           
+            color: Colors.white,
+            width: double.infinity,            
+            padding: EdgeInsets.only(left: 17.0, right: 17.0 , bottom: 10.0  ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                RichText(                  
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: "${post.username} ",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15.0
+                        )           
+                      ),
+                      TextSpan(
+                        text: "${post.titulo} ",
+                        style: TextStyle(
+                          color: Colors.black                      
+                        )                  
+                      ),
+                    ]
+                  ),
+                ),
+            
               ],
             )
             
