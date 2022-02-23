@@ -1,0 +1,4 @@
+class Constantes{
+
+  String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDllYThmOS0wY2EyLTQxMjgtODEwOS0yZWI3MzY1Nzg1ODMiLCJpYXQiOjE2NDU2MTU3OTcsIm5pY2siOiJpc3Npc2kiLCJyb2xlIjoiVVNFUiJ9.DVKLy3Rf6LXCVD7CIpdBZvGFh6udbos91v_rnOM-sAo";
+}
