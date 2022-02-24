@@ -33,8 +33,11 @@ class _ProfileScreenState extends State<ProfileScreenV2> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) {return UserWithPostBloc(userRepository)..add(FetchUserWithType(Constant.nowPlaying));},
-      child: _createPublics(context));
+        create: (context) {
+          return UserWithPostBloc(userRepository)
+            ..add(FetchUserWithType(Constant.nowPlaying));
+        },
+        child: _createPublics(context));
   }
 }
 
@@ -63,30 +66,28 @@ Widget _createPublics(BuildContext context) {
 
 Widget _profile(BuildContext context, UserApiResponse user) {
   return Scaffold(
-          appBar: AppBar(
-            automaticallyImplyLeading: false,
-            backgroundColor: Colors.white,
-            elevation: 0,
-            title: const Text(
-              "yo",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  color: Colors.black),
-            ),
-            actions: const [
-              Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: IconButton(
-                    onPressed: null,
-                    icon: Icon(
-                      Icons.menu,
-                      size: 30,
-                      color: Colors.black,
-                    ),
-                  ))
-            ],
-          ),
+    appBar: AppBar(
+      automaticallyImplyLeading: false,
+      backgroundColor: Colors.white,
+      elevation: 0,
+      title: const Text(
+        "yo",
+        style: TextStyle(
+            fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),
+      ),
+      actions: const [
+        Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: IconButton(
+              onPressed: null,
+              icon: Icon(
+                Icons.menu,
+                size: 30,
+                color: Colors.black,
+              ),
+            ))
+      ],
+    ),
     body: Column(
       children: [
         Column(
@@ -106,45 +107,50 @@ Widget _profile(BuildContext context, UserApiResponse user) {
                             .replaceFirst('localhost', '10.0.2.2'))),
                   ),
                 ),
-                Column(
+                Row(
                   children: [
-                    Row(
+                    Column(
                       children: [
-                        Column(
-                          children: [
-                            TextButton(
-                              onPressed: null,
-                              child: Text(
-                                user.posts.length.toString(),
+                        TextButton(
+                          onPressed: null,
+                          child: Text(
+                            user.posts.length.toString(),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                        ),
+                        Text("publicaciones"),
+                      ],
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TextButton(
+                            onPressed: () {},
+                            child: Text("777",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.black),
-                              ),
-                            ),
-                            Text("posts"),
-                          ],
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                       
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            TextButton(
-                                onPressed: () {
-                                
-                                },
-                                child: Text("777",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black))),
-                            Text("following"),
-                          ],
-                        ),
+                                    color: Colors.black))),
+                        Text("seguidores"),
+                      ],
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TextButton(
+                            onPressed: () {},
+                            child: Text("1",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black))),
+                        Text("siguiendo"),
                       ],
                     ),
                   ],
@@ -165,77 +171,134 @@ Widget _profile(BuildContext context, UserApiResponse user) {
                 Padding(
                   padding: EdgeInsets.only(left: 8.0),
                   child: Text(
-                    user.nick ,
+                    user.nick,
                     style: TextStyle(color: Colors.grey),
                   ),
                 )
               ],
             ),
-            Container(
+            Padding(
+              padding: const EdgeInsets.only(left:2.0),
+              child: Container(
                 height: 35,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(color: Colors.grey.shade200),
                 ),
-                width: 320,
+                width: 367,
                 child: TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      "Edit Profile",
-                      style: TextStyle(color: Colors.black),
-                    )))
-
+                  onPressed: () {},
+                  child: const Text(
+                    "editar perfil",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left:11.0),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(2.0),
+                    child: Container(
+                      height: 35,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: Colors.grey.shade200),
+                      ),
+                      width: 120,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: const Text(
+                          "herramientas",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(2.0),
+                    child: Container(
+                      height: 35,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: Colors.grey.shade200),
+                      ),
+                      width: 120,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: const Text(
+                          "herramientas",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(2.0),
+                    child: Container(
+                      height: 35,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: Colors.grey.shade200),
+                      ),
+                      width: 120,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: const Text(
+                          "herramientas",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
         const Divider(
           height: 10,
         ),
-        
-          
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.table_view)),
-                 IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.play_arrow)),
-                IconButton(
-                    onPressed: () {}, icon: const Icon(Icons.person)),
-              ],
-            ),
-            const SizedBox(
-              width: 20,
-            ),
-            
-            /*Image(  image: NetworkImage(user.publicaciones.elementAt(0).file.toString().replaceFirst('localhost', '10.0.2.2')),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(onPressed: () {}, icon: const Icon(Icons.table_view)),
+            IconButton(onPressed: () {}, icon: const Icon(Icons.play_arrow)),
+            IconButton(onPressed: () {}, icon: const Icon(Icons.person)),
+          ],
+        ),
+        const SizedBox(
+          width: 20,
+        ),
+
+        /*Image(  image: NetworkImage(user.publicaciones.elementAt(0).file.toString().replaceFirst('localhost', '10.0.2.2')),
                         
                         ),*/
-            Flexible(
-              child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                  ),
-                  itemCount: user.posts.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Card(
-                      color: Colors.white,
-                      child: Image(
-                            image: NetworkImage(user.posts.elementAt(index).imagen.toString().replaceFirst('localhost', '10.0.2.2')),
-                            fit: BoxFit.cover,
-                          ));
-                    
-                  }),
-            ),
-    
-            const SizedBox(
-              width: 20,
-            ),
-          ],
-        
-      
+        Flexible(
+          child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+              ),
+              itemCount: user.posts.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Card(
+                    color: Colors.white,
+                    child: Image(
+                      image: NetworkImage(user.posts
+                          .elementAt(index)
+                          .imagen
+                          .toString()
+                          .replaceFirst('localhost', '10.0.2.2')),
+                      fit: BoxFit.cover,
+                    ));
+              }),
+        ),
+        const SizedBox(
+          width: 20,
+        ),
+      ],
     ),
-    
   );
 }
