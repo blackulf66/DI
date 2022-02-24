@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_miarmapp/ui/screens/home_screen.dart';
 import 'package:flutter_miarmapp/ui/screens/home_screenv2.dart';
 import 'package:flutter_miarmapp/ui/screens/profile_screen.dart';
+import 'package:flutter_miarmapp/ui/screens/profile_screenV2.dart';
 import 'package:flutter_miarmapp/ui/screens/search_screen.dart';
 
 class MenuScreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class _MenuScreenState extends State<MenuScreen> {
   List<Widget> pages = [
     const Homev2Screen(),
     const SearchScreen(),
-    const ProfileScreen()
+    const ProfileScreenV2()
   ];
 
   @override

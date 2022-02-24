@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_miarmapp/ui/screens/login.dart';
+import 'package:flutter_miarmapp/ui/screens/loginV2.dart';
 import 'package:flutter_miarmapp/ui/screens/menu_screen.dart';
 import 'package:flutter_miarmapp/ui/screens/profile_screen.dart';
+import 'package:flutter_miarmapp/ui/screens/profile_screenV2.dart';
 import 'package:flutter_miarmapp/ui/screens/register_screen.dart';
 
 void main() {
@@ -21,9 +23,9 @@ class MyApp extends StatelessWidget {
       initialRoute: '/login',
   routes: {
     '/': (context) => const MenuScreen(),
-    '/login': (context) => LoginPage(),
+    '/login': (context) =>  LoginPage(),
     '/register': (context) => const RegisterScreen(),
-    '/profile':(context) => const ProfileScreen(),
+    '/profile':(context) => const ProfileScreenV2(),
   },
     );
   }
