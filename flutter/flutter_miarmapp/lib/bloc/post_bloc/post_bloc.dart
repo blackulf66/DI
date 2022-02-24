@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_miarmapp/models/postApi_model.dart';
-import 'package:flutter_miarmapp/repository/postApi_repository.dart';
+import 'package:flutter_miarmapp/repository/post_repository/postApi_repository.dart';
 import 'package:meta/meta.dart';
 
 part 'post_event.dart';

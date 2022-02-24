@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_miarmapp/bloc/post_bloc/post_bloc.dart';
 import 'package:flutter_miarmapp/models/postApi_model.dart';
-import 'package:flutter_miarmapp/repository/postApi_repository.dart';
-import 'package:flutter_miarmapp/repository/postApi_repository_impl.dart';
+import 'package:flutter_miarmapp/repository/post_repository/postApi_repository.dart';
+import 'package:flutter_miarmapp/repository/post_repository/postApi_repository_impl.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_miarmapp/ui/widgets/error_page.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -132,6 +132,15 @@ Widget _createPopular(BuildContext context) {
     );
   }
 
+  Widget _createPopularViewperfil(BuildContext context, PostApiResponse post) {
+    return Image(
+                      image: NetworkImage(post.imagen.replaceFirst('localhost', '10.0.2.2')),
+                      height: 45.0,
+                      width: 45.0,
+                    );
+
+  }
+
   Widget _createPopularViewItem(BuildContext context, PostApiResponse post) {
     final width = MediaQuery.of(context).size.width;
     return Container(
@@ -144,7 +153,7 @@ Widget _createPopular(BuildContext context) {
               children: <Widget>[
 
                 Container(
-                  padding: EdgeInsets.only(top: 12.0 , left: 18.0, bottom: 12.0, right: 12.0 ),
+                  padding: const EdgeInsets.only(top: 12.0 , left: 18.0, bottom: 12.0, right: 12.0 ),
                   child: ClipRRect(
                     borderRadius:BorderRadius.circular(50.0),
                     child: Image(
@@ -157,13 +166,13 @@ Widget _createPopular(BuildContext context) {
 
                 Text( 
                   post.username,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16.0
                   ),
                 ),
 
-                Expanded(child: SizedBox()),
+                const Expanded(child: SizedBox()),
 
                 IconButton(
                   icon: Icon( Icons.more_vert ),
@@ -187,26 +196,26 @@ Widget _createPopular(BuildContext context) {
               children: <Widget>[
 
                 Row(
-                  children: <Widget>[
+                  children: const <Widget>[
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(8.0),
                       child: Icon(Typicons.heart),
                     ),
         
                      Padding(
-                       padding: const EdgeInsets.all(8.0),
+                       padding: EdgeInsets.all(8.0),
                        child: Icon(Typicons.comment),
                      ),
                      
                      Padding(
-                       padding: const EdgeInsets.all(8.0),
+                       padding: EdgeInsets.all(8.0),
                        child: Icon(Typicons.search_outline),
                      ),
                   ],
                 ),
 
-                 Padding(
-                   padding: const EdgeInsets.all(8.0),
+                 const Padding(
+                   padding: EdgeInsets.all(8.0),
                    child: Icon(Typicons.star),
                  ),    
               ],
@@ -217,7 +226,7 @@ Widget _createPopular(BuildContext context) {
           Container(           
             color: Colors.white,
             width: double.infinity,            
-            padding: EdgeInsets.only(left: 17.0, right: 17.0 , bottom: 10.0  ),
+            padding: const EdgeInsets.only(left: 17.0, right: 17.0 , bottom: 10.0  ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[

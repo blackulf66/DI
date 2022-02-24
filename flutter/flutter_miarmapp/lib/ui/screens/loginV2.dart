@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_miarmapp/bloc/login_bloc/login_bloc.dart';
-import 'package:flutter_miarmapp/models/auth/login_response.dart';
+import 'package:flutter_miarmapp/models/auth/login_dto.dart';
 import 'package:flutter_miarmapp/repository/auth_repository/auth_repository.dart';
 import 'package:flutter_miarmapp/repository/auth_repository/auth_repository_impl.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_miarmapp/ui/screens/home_screen.dart';
 import 'package:flutter_miarmapp/ui/screens/menu_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -84,6 +83,8 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Container(
+            child: Image.asset('assets/images/logo_miarmapp.png')          ),
           Container(
             margin: const EdgeInsets.only(top: 50),
             child: TextFormField(
