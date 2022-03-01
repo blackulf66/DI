@@ -10,12 +10,12 @@ class PostApiRepositoryImpl extends PostApiRepository {
 
 @override
   Future<List<PostApiResponse>> fetchPosts() async {
-   /*SharedPreferences prefs = await SharedPreferences.getInstance();*/
+   SharedPreferences prefs = await SharedPreferences.getInstance();
                 
     final response = await _client.get(Uri.parse('http://10.0.2.2:8080/post/public'),headers: {
         'Authorization':
-            'Bearer ${Constantes.token}',
-              /*'Bearer ${prefs.getString('token')}',*/
+            /*'Bearer ${Constantes.token}',*/
+             'Bearer ${prefs.getString('token')}'
     },);
     if (response.statusCode == 200) {
       return (json.decode(response.body) as List).map((i) =>

@@ -3,15 +3,16 @@ import 'package:flutter_miarmapp/models/auth/login_dto.dart';
 import 'package:flutter_miarmapp/models/auth/login_response.dart';
 import 'package:flutter_miarmapp/repository/auth_repository/auth_repository.dart';
 import 'package:http/http.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthRepositoryImpl extends AuthRepository {
   final Client _client = Client();
 
   @override
   Future<LoginResponse> login(LoginDto loginDto) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     Map<String, String> headers = {
       'Content-Type': 'application/json', 
-    // 'Authorization': 'Bearer $token'
     };
 
     final response = await _client.post(

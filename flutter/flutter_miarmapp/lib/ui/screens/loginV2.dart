@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_miarmapp/bloc/login_bloc/login_bloc.dart';
 import 'package:flutter_miarmapp/models/auth/login_dto.dart';
+import 'package:flutter_miarmapp/models/auth/login_response.dart';
 import 'package:flutter_miarmapp/repository/auth_repository/auth_repository.dart';
 import 'package:flutter_miarmapp/repository/auth_repository/auth_repository_impl.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,10 +20,12 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  late Future<SharedPreferences> _prefs;
 
   @override
   void initState() {
     authRepository = AuthRepositoryImpl();
+    _prefs = SharedPreferences.getInstance();
     super.initState();
   }
 
@@ -46,12 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
               return state is LoginSuccessState || state is LoginErrorState;
             }, listener: (context, state) async {
               if (state is LoginSuccessState) {
-                SharedPreferences prefs = await SharedPreferences.getInstance();
-                prefs.setString('token', state.loginResponse.token);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MenuScreen()),
-                );
+                _loginSuccess(context, state.loginResponse);
               } else if (state is LoginErrorState) {
                 _showSnackbar(context, state.message);
               }
@@ -59,15 +57,27 @@ class _LoginScreenState extends State<LoginScreen> {
               return state is LoginInitialState || state is LoginLoadingState;
             }, builder: (ctx, state) {
               if (state is LoginInitialState) {
-                return buildForm(ctx);
+                return _login(ctx);
               } else if (state is LoginLoadingState) {
                 return const Center(child: CircularProgressIndicator());
               } else {
-                return buildForm(ctx);
+                return _login(ctx);
               }
             })),
       ),
     );
+  }
+
+  Future<void> _loginSuccess(BuildContext context, LoginResponse late) async {
+    _prefs.then((SharedPreferences prefs) {
+      prefs.setString('token', late.token);
+      prefs.setString('avatar', late.avatar);
+      prefs.setString('nick' , late.nick);
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const MenuScreen()),
+      );
+    });
   }
 
   void _showSnackbar(BuildContext context, String message) {
@@ -77,79 +87,117 @@ class _LoginScreenState extends State<LoginScreen> {
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
-  Widget buildForm(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            child: Image.asset('assets/images/logo_miarmapp.png')          ),
-          Container(
-            margin: const EdgeInsets.only(top: 50),
-            child: TextFormField(
-              controller: emailController,
-              decoration: const InputDecoration(
-                  suffixIcon: Icon(Icons.email),
-                  suffixIconColor: Colors.white,
-                  hintText: 'Email',
-                  focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white))),
-              onSaved: (String? value) {
-                // This optional block of code can be used to run
-                // code when the user saves the form.
-              },
-              validator: (String? value) {
-                return (value == null || !value.contains('@'))
-                    ? 'Do not use the @ char.'
-                    : null;
-              },
+  _login(BuildContext context) {
+    return Container(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(24.0, 160.0, 24.0, 0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+             Center(child: SizedBox(
+               child: Image.asset('assets/images/logo_miarmapp.png'))),
+            Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(14.0),
+                    ),
+                    child: TextFormField(
+                      validator: (String? value) {
+                        return (value == null || !value.contains('@'))
+                            ? 'debe tener @ .'
+                            : null;
+                      },
+                      onSaved: (String? value) {},
+                      controller: emailController,
+                      decoration: const InputDecoration(
+                        hintText: 'Email',
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 32,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(14.0),
+                    ),
+                    child: TextFormField(
+                        controller: passwordController,
+                        obscureText: true,
+                        decoration: const InputDecoration(
+                          hintText: 'Password',
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                          ),
+                        ),
+                        onSaved: (String? value) {},
+                        validator: (value) {
+                          return (value == null || value.isEmpty)
+                              ? 'escribe una contraseña'
+                              : null;
+                        }),
+                  )
+                ],
+              ),
             ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 20),
-            child: TextFormField(
-              controller: passwordController,
-              obscureText: true,
-              decoration: const InputDecoration(
-                  suffixIcon: Icon(Icons.vpn_key),
-                  suffixIconColor: Colors.white,
-                  hintText: 'Password',
-                  focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white))),
-              onSaved: (String? value) {
-              },
-              validator: (value) {
-                return (value == null || value.isEmpty)
-                    ? 'Write a password'
-                    : null;
-              },
+            const SizedBox(
+              height: 30,
             ),
-          ),
-          GestureDetector(
-            onTap: () {
-              if (_formKey.currentState!.validate()) {
-                final loginDto = LoginDto(
-                    email: emailController.text,
-                    password: passwordController.text);
-                BlocProvider.of<LoginBloc>(context).add(DoLoginEvent(loginDto));
-              }
-            },
-            child: Container(
-                width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.only(top: 30, left: 30, right: 30),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.blue, width: 2),
-                    borderRadius: BorderRadius.circular(50)),
-                child: Text(
-                  'Sign In'.toUpperCase(),
-                  style: const TextStyle(color: Colors.blue),
-                  textAlign: TextAlign.center,
-                )),
-          )
-        ],
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 12,
+                ),
+              ],
+            ),
+            Center(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    fixedSize: const Size(240, 50), primary: Colors.blue),
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    final loginDto = LoginDto(
+                        email: emailController.text,
+                        password: passwordController.text);
+                    BlocProvider.of<LoginBloc>(context)
+                        .add(DoLoginEvent(loginDto));
+                  }
+                },
+                child: const Text('Login'),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Don't have an account? ",
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/register');
+                    },
+                    child: const Text(
+                      'Register',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
