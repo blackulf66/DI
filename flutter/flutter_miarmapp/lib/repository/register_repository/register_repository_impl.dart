@@ -15,12 +15,12 @@ class RegisterRepositoryImpl extends RegisterRepository {
 
 
     final response = await _client.post(
-        Uri.parse('http://10.0.2.2:8080/auth/login'),
+        Uri.parse('http://10.0.2.2:8080/auth/register'),
         body: jsonEncode(registerDto.toJson()));
     if (response.statusCode == 201) {
       return RegisterResponse.fromJson(json.decode(response.body));
     } else {
-      throw Exception('error al loguearse ');
+      throw Exception('error al registrarse ');
     }
   }
 }

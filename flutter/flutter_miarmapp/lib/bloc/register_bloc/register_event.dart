@@ -10,5 +10,5 @@ abstract class RegisterEvent extends Equatable {
 class DoRegisterEvent extends RegisterEvent {
   final RegisterDto registerDto;
 
-  const DoRegisterEvent(this.registerDto);
+  const DoRegisterEvent(this.registerDto, String path);
 }

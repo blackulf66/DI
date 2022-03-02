@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_miarmapp/bloc/bloc_ver_perfil/bloc/user_with_post_bloc.dart';
 import 'package:flutter_miarmapp/models/userApi_model.dart';
 import 'package:flutter_miarmapp/repository/constants.dart';
-import 'package:flutter_miarmapp/repository/user_with_post_repository/user_with_post_repository.dart';
-import 'package:flutter_miarmapp/repository/user_with_post_repository/user_with_post_repository_impl.dart';
+import 'package:flutter_miarmapp/repository/user_with_post_repository/user_post_repository.dart';
+import 'package:flutter_miarmapp/repository/user_with_post_repository/user_post_repository_impl.dart';
 import 'package:flutter_miarmapp/ui/widgets/error_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,14 +19,12 @@ class _ProfileScreenState extends State<ProfileScreenV2> {
 
   @override
   void initState() {
-    // TODO: implement initState
     userRepository = UserPostRepositoryImpl();
     super.initState();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
   }
 
@@ -273,9 +271,6 @@ Widget _profile(BuildContext context, UserApiResponse user) {
           width: 20,
         ),
 
-        /*Image(  image: NetworkImage(user.publicaciones.elementAt(0).file.toString().replaceFirst('localhost', '10.0.2.2')),
-                        
-                        ),*/
         Flexible(
           child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_miarmapp/models/userApi_model.dart';
-import 'package:flutter_miarmapp/repository/user_with_post_repository/user_with_post_repository.dart';
+import 'package:flutter_miarmapp/repository/user_with_post_repository/user_post_repository.dart';
 
 part 'user_with_post_event.dart';
 part 'user_with_post_state.dart';

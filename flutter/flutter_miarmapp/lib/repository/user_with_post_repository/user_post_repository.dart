@@ -1,6 +1,4 @@
 
-
-
 import 'package:flutter_miarmapp/models/userApi_model.dart';
 
 abstract class UserPostRepository {
