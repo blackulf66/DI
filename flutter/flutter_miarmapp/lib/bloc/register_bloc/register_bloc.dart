@@ -12,15 +12,15 @@ part 'register_event.dart';
 part 'register_state.dart';
 
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
-  final RegisterRepository registerRepository;
+  final AuthRepository authRepository;
 
-  RegisterBloc(this.registerRepository) : super(RegisterInitialState()) {
+  RegisterBloc(this.authRepository) : super(RegisterInitialState()) {
     on<DoRegisterEvent>(_doRegisterEvent);
   }
 
   void _doRegisterEvent(DoRegisterEvent event, Emitter<RegisterState> emit) async {
     try {
-      final registerResponse = await registerRepository.register(event.registerDto);
+      final registerResponse = await authRepository.register(event.registerDto, event.imagePath);
       emit(RegisterSuccessState(registerResponse));
       return;
     } on Exception catch (e) {
