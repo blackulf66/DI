@@ -30,6 +30,7 @@ class AuthRepositoryImpl extends AuthRepository {
     }
   }
 
+  @override
   Future<RegisterResponse> register(
       RegisterDto registerDto, String imagePath) async {
     Map<String, String> headers = {
@@ -37,24 +38,14 @@ class AuthRepositoryImpl extends AuthRepository {
       // 'Authorization': 'Bearer $token'
     };
 
-    Map<String, String> headers2 = {
-      'Content-Type': 'application/json',
-      // 'Authorization': 'Bearer $token'
-    };
-  
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-
-
     var uri = Uri.parse('http://10.0.2.2:8080/auth/register');
                     var request = http.MultipartRequest('POST', uri);
-                    request.fields['nick'] = prefs.getString('nick').toString();
-                    request.fields['email'] = prefs.getString('email').toString();
-                    request.fields['rol'] = true.toString();
-                    request.fields['password'] = prefs.getString('password').toString();
-                    request.fields['perfilProvado'] = prefs.getString('perfilProvado').toString();
-                    request.files.add(await http.MultipartFile.fromPath('file', prefs.getString('file').toString()));
-
-                      
+                    request.fields['nick'] = registerDto.nick;
+                    request.fields['email'] = registerDto.email;
+                    request.fields['password'] = registerDto.password;
+                    request.fields['perfilProvado'] = registerDto.perfilProvado;
+                    request.files.add(await http.MultipartFile.fromPath('file', imagePath));
+                    request.headers.addAll(headers);
                     var response = await request.send();
                     if (response.statusCode == 201) print('Uploaded!');
 
@@ -63,7 +54,7 @@ class AuthRepositoryImpl extends AuthRepository {
           jsonDecode(await response.stream.bytesToString()));
     } else {
       print(response.statusCode);
-      throw Exception(prefs.getString('nombre'));
+      throw Exception(response.statusCode);
     }
   }
 

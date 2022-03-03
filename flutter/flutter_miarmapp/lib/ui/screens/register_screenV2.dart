@@ -142,7 +142,7 @@ class _RegisterScreenState extends State<RegisterScreenV2> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Register your account',
+                    'registrate',
                     style: TextStyle(color:Colors.black)
                   ),
                 ],
@@ -288,32 +288,7 @@ class _RegisterScreenState extends State<RegisterScreenV2> {
                                     SharedPreferences prefs =
                                         await SharedPreferences.getInstance();
                                     prefs.setString('file', path);
-                                    // TODO el evento que debeis crear en el BLoC para
-                                    // poder subir la imagen que tenemos guardada en
-                                    // state.pickedFile.path
-
-                                    /*var res = await uploadImage(
-                                        state.pickedFile.path, uploadUrl);
-                                    print(state.pickedFile.path);*/
-
-                                    /*var request = http.MultipartRequest(
-                                        "POST",
-                                        Uri.parse(
-                                            'http://10.0.2.2:8080/auth/register'));
-                                    var picture = http.MultipartFile.fromBytes(
-                                        'file',
-                                        (await rootBundle
-                                                .load(state.pickedFile.path))
-                                            .buffer
-                                            .asUint8List(),
-                                        filename: state.pickedFile.toString());
-                                    request.files.add(picture);
-                                    var response = await request.send();
-                                    var responseData =
-                                        await response.stream.toBytes();
-                                    var result =
-                                        String.fromCharCodes(responseData);
-                                    print(result);*/
+        
                                   },
                                   child: const Text('Upload Image'))
                             ]);
@@ -353,7 +328,7 @@ class _RegisterScreenState extends State<RegisterScreenV2> {
                           nick: nick.text,
                           email: emailController.text,
                           password: passwordController.text,
-                          perfilProvado: perfilPrivador.text);
+                          perfilProvado:'False');
 
                       BlocProvider.of<RegisterBloc>(context)
                           .add(DoRegisterEvent(loginDto, path));
@@ -362,6 +337,7 @@ class _RegisterScreenState extends State<RegisterScreenV2> {
                     prefs.setString('email', emailController.text);
                     prefs.setString('fechaNacimiento', DateFormat("yyyy-MM-dd").format(selectedDate));
                     prefs.setString('password', passwordController.text);
+                    prefs.setString('perfilProvado', perfilPrivador.text);
 
                     Navigator.pushNamed(context, '/login');
                   },
@@ -395,14 +371,6 @@ class _RegisterScreenState extends State<RegisterScreenV2> {
       ),
     );
   }
-
-  /*Future<String?> uploadImage(filepath, url) async {
-    var request = http.MultipartRequest('POST', Uri.parse(url));
-    request.files.add(await http.MultipartFile.fromPath('file', filepath));
-    var res = await request.send();
-    return res.reasonPhrase;
-  }*/
-
   
 
 }
