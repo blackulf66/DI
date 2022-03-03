@@ -1,12 +1,15 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_miarmapp/bloc/post_bloc/post_bloc.dart';
 import 'package:flutter_miarmapp/models/postApi_model.dart';
 import 'package:flutter_miarmapp/repository/post_repository/postApi_repository.dart';
 import 'package:flutter_miarmapp/repository/post_repository/postApi_repository_impl.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_miarmapp/ui/screens/post_form.dart';
 import 'package:flutter_miarmapp/ui/widgets/error_page.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fluttericon/typicons_icons.dart';
+import 'package:image_picker/image_picker.dart';
 
 
 class Homev2Screen extends StatefulWidget {
@@ -32,7 +35,7 @@ class _Homev2ScreenState extends State<Homev2Screen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (context) { return PostBloc(postApiRepository)..add(FetchPost()); },
+    return BlocProvider(create: (context) { return PostBloc(postApiRepository)..add(FetchPostWithType('public')); },
       child: Scaffold(
       backgroundColor: Color(0xFFF9F9F9),  
       appBar:AppBar(
@@ -47,10 +50,14 @@ class _Homev2ScreenState extends State<Homev2Screen> {
       ) ,     
       
       actions: <Widget>[
-        IconButton(
-          onPressed: (){},
-          icon: Icon( Icons.h_plus_mobiledata , color: Colors.black ,size: 28.0 ),
-        ),
+        IconButton(onPressed: (){
+                    
+                      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const PostForm()),
+      );
+
+                  }, icon: Icon(Icons.add_box_outlined)),
         IconButton(
           onPressed: (){},
           icon: Icon( Icons.tv , color: Colors.black ,size: 28.0 ),
@@ -85,15 +92,15 @@ class _Homev2ScreenState extends State<Homev2Screen> {
   }
 
 Widget _createPopular(BuildContext context) {
-    return BlocBuilder<PostBloc, PostState>(
+    return BlocBuilder<PostBloc, BlocPostState>(
       builder: (context, state) {
-        if (state is PostInitial) {
+        if (state is BlocPostInitial) {
           return const Center(child: CircularProgressIndicator());
         } else if (state is PostFetchError) {
           return ErrorPage(
             message: state.message,
             retry: () {
-              context.watch<PostBloc>().add(FetchPost());
+              context.watch<PostBloc>().add(FetchPostWithType('public'));
             },
           );
         } else if (state is PostFetched) {
@@ -262,4 +269,5 @@ Widget _createPopular(BuildContext context) {
     );
 
   }
-}
+
+  }

@@ -33,6 +33,8 @@ class _RegisterScreenState extends State<RegisterScreenV2> {
   FilePickerResult? result;
   PlatformFile? file;
   final _imagePicker = ImagePicker();
+  bool _passwordVisible = false;
+
 
   String date = "";
   DateTime selectedDate = DateTime.now();
@@ -53,6 +55,8 @@ class _RegisterScreenState extends State<RegisterScreenV2> {
   void initState() {
     authRepository = AuthRepositoryImpl();
     _prefs = SharedPreferences.getInstance();
+    _passwordVisible = false;
+
     super.initState();
   }
 
@@ -95,7 +99,8 @@ class _RegisterScreenState extends State<RegisterScreenV2> {
                 _showSnackbar(context, "error");
               }
             }, buildWhen: (context, state) {
-              return state is RegisterInitialState || state is RegisterLoadingState;
+              return state is RegisterInitialState ||
+                  state is RegisterLoadingState;
             }, builder: (ctx, state) {
               if (state is RegisterInitialState) {
                 return _register(ctx);
@@ -134,100 +139,112 @@ class _RegisterScreenState extends State<RegisterScreenV2> {
     return SingleChildScrollView(
       child: SafeArea(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(24.0, 40.0, 24.0, 0),
+          padding: EdgeInsets.fromLTRB(24.0, 0.0, 24.0, 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'registrate',
-                    style: TextStyle(color:Colors.black)
+                  Center(
+                    child: Text(
+                        'Regístrate para ver fotos y vídeos de tus amigos',
+                        style: TextStyle(color: Colors.grey, fontSize: 20)),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: Divider(
+                      color: Colors.black,
+                      height: 20,
+                    ),
+                  )
                 ],
-              ),
-              SizedBox(
-                height: 30,
               ),
               Form(
                 key: _formKey,
                 child: Column(
                   children: [
-                   
-                    SizedBox(
-                      height: 32,
-                    ),
                     Column(
                       children: [
                         Container(
-                          width: 230,
+                          width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(14.0),
+                            border: Border.all(
+                              color: Colors.grey,
+                              width: 1,
+                            ),
                           ),
                           child: TextFormField(
                             controller: nick,
                             decoration: InputDecoration(
                               hintText: 'Nick',
-                              hintStyle: TextStyle(color:Colors.black),
+                              hintStyle: TextStyle(color: Colors.grey),
                               border: OutlineInputBorder(
                                 borderSide: BorderSide.none,
                               ),
                             ),
                           ),
                         ),
-                        SizedBox(
-                          width: 18,
-                        ),
-                        Container(
-                          width:210,
-                          height: 60,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(14.0),
-                          ),
-                          child: DateTimeFormField(
-                            
-                            initialDate: DateTime(2001, 9, 7),
-                            firstDate: DateTime.utc(1900),
-                            lastDate: DateTime.now(),
-                            decoration: const InputDecoration(
-                              hintStyle: TextStyle(color: Colors.black45),
-                              errorStyle: TextStyle(color: Colors.redAccent),
-                              border: OutlineInputBorder(),
-                              suffixIcon: Icon(Icons.event_note),
-                              labelText: 'Only time',
+                      
+                        Padding(
+                          padding: const EdgeInsets.only(top:20),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width,
+                            height: 60,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(14.0),
+                                border: Border.all(
+                              color: Colors.grey,
+                              width: 1,
                             ),
-                            mode: DateTimeFieldPickerMode.date,
-                            autovalidateMode: AutovalidateMode.always,
-                            
-                            validator: (e) => (e?.day ?? 0) == 1
-                                ? 'Please not the first day'
-                                : null,
-                            onDateSelected: (DateTime value) {
-                              selectedDate = value;
-                              print(value);
-                            },
+                            ),
+                            child: DateTimeFormField(
+                              initialDate: DateTime(2001, 9, 7),
+                              firstDate: DateTime.utc(1900),
+                              lastDate: DateTime.now(),
+                              decoration: const InputDecoration(
+                                hintStyle: TextStyle(color: Colors.black45),
+                                errorStyle: TextStyle(color: Colors.redAccent),
+                                suffixIcon: Icon(Icons.calendar_today),
+                                labelText: 'cuando naciste?',
+                              ),
+                              mode: DateTimeFieldPickerMode.date,
+                              autovalidateMode: AutovalidateMode.always,
+                              validator: (e) => (e?.day ?? 0) == 1
+                                  ? 'Please not the first day'
+                                  : null,
+                              onDateSelected: (DateTime value) {
+                                selectedDate = value;
+                                print(value);
+                              },
+                            ),
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: 32,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(14.0),
-                      ),
-                      child: TextFormField(
-                        controller: emailController,
-                        decoration: InputDecoration(
-                          hintText: 'Email',
-                          hintStyle:  TextStyle(color:Colors.black),
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide.none,
+                    
+                    Padding(
+                      padding: const EdgeInsets.only(top:20),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(14.0),
+                           border: Border.all(
+                              color: Colors.grey,
+                              width: 1,
+                            ),
+                        ),
+                        child: TextFormField(
+                          controller: emailController,
+                          decoration: InputDecoration(
+                            hintText: 'Email',
+                            hintStyle: TextStyle(color: Colors.grey),
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                            ),
                           ),
                         ),
                       ),
@@ -235,35 +252,50 @@ class _RegisterScreenState extends State<RegisterScreenV2> {
                     SizedBox(
                       height: 32,
                     ),
-                    Column(
+                     Column(
                       children: [
                         Container(
-                          width: 165,
+                          width: 300,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(14.0),
+                             border: Border.all(
+                              color: Colors.grey,
+                              width: 1,
+                            ),
                           ),
                           child: TextFormField(
+                            keyboardType: TextInputType.text,
                             controller: passwordController,
+                            obscureText: !_passwordVisible,
                             decoration: InputDecoration(
                               hintText: 'Password',
-                              suffixIcon: Icon(Icons.remove_red_eye_rounded,
-                                  color: Colors.black54),
-                              hintStyle:  TextStyle(color:Colors.black),
+                              hintStyle: TextStyle(color: Colors.grey),
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  _passwordVisible
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                  color: Colors.grey  ,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    _passwordVisible = !_passwordVisible;
+                                  });
+                                },
+                              ),
                               border: OutlineInputBorder(
                                 borderSide: BorderSide.none,
                               ),
                             ),
                           ),
                         ),
-                        SizedBox(
-                          width: 18,
-                        ),
-                        
+                      
                       ],
                     ),
+                    
                     SizedBox(
-                      height: 18,
+                      height: 20,
                     ),
                     BlocConsumer<ImagePickBlocBloc, ImagePickBlocState>(
                         listenWhen: (context, state) {
@@ -283,14 +315,7 @@ class _RegisterScreenState extends State<RegisterScreenV2> {
                                 File(state.pickedFile.path),
                                 height: 100,
                               ),
-                              ElevatedButton(
-                                  onPressed: () async {
-                                    SharedPreferences prefs =
-                                        await SharedPreferences.getInstance();
-                                    prefs.setString('file', path);
-        
-                                  },
-                                  child: const Text('Upload Image'))
+                             
                             ]);
                           }
                           return Center(
@@ -328,14 +353,15 @@ class _RegisterScreenState extends State<RegisterScreenV2> {
                           nick: nick.text,
                           email: emailController.text,
                           password: passwordController.text,
-                          perfilProvado:'False');
+                          perfilProvado: 'False');
 
                       BlocProvider.of<RegisterBloc>(context)
                           .add(DoRegisterEvent(loginDto, path));
                     }
                     prefs.setString('nick', nick.text);
                     prefs.setString('email', emailController.text);
-                    prefs.setString('fechaNacimiento', DateFormat("yyyy-MM-dd").format(selectedDate));
+                    prefs.setString('fechaNacimiento',
+                        DateFormat("yyyy-MM-dd").format(selectedDate));
                     prefs.setString('password', passwordController.text);
                     prefs.setString('perfilProvado', perfilPrivador.text);
 
@@ -350,17 +376,15 @@ class _RegisterScreenState extends State<RegisterScreenV2> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "Already have an account? ",
-                    style: TextStyle(color:Colors.grey)
-                  ),
+                  Text("Already have an account? ",
+                      style: TextStyle(color: Colors.grey)),
                   GestureDetector(
                     onTap: () {
                       Navigator.pushNamed(context, '/login');
                     },
                     child: Text(
                       'Login',
-                      style: TextStyle(color:Colors.grey),
+                      style: TextStyle(color: Colors.grey),
                     ),
                   ),
                 ],
@@ -371,6 +395,4 @@ class _RegisterScreenState extends State<RegisterScreenV2> {
       ),
     );
   }
-  
-
 }
