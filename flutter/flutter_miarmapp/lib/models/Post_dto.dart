@@ -4,10 +4,11 @@ class PostDto {
     required this.titulo,
     required this.texto,
     required this.postEnum,
+    
   });
   late final String titulo;
   late final String texto;
-  late final bool postEnum;
+  late final String postEnum;
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};

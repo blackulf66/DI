@@ -1,7 +1,10 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_miarmapp/bloc/bloc_ver_perfil/bloc/user_with_post_bloc.dart';
 import 'package:flutter_miarmapp/bloc/post_bloc/post_bloc.dart';
 import 'package:flutter_miarmapp/models/postApi_model.dart';
+import 'package:flutter_miarmapp/models/userApi_model.dart';
+import 'package:flutter_miarmapp/repository/constants.dart';
 import 'package:flutter_miarmapp/repository/post_repository/postApi_repository.dart';
 import 'package:flutter_miarmapp/repository/post_repository/postApi_repository_impl.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,6 +36,7 @@ class _Homev2ScreenState extends State<Homev2Screen> {
     super.dispose();
   }
 
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(create: (context) { return PostBloc(postApiRepository)..add(FetchPostWithType('public')); },
@@ -57,7 +61,7 @@ class _Homev2ScreenState extends State<Homev2Screen> {
         MaterialPageRoute(builder: (context) => const PostForm()),
       );
 
-                  }, icon: Icon(Icons.add_box_outlined)),
+                  }, icon: Icon(Icons.add_box_outlined,color: Colors.black ,size: 28.0 )),
         IconButton(
           onPressed: (){},
           icon: Icon( Icons.tv , color: Colors.black ,size: 28.0 ),
@@ -113,7 +117,7 @@ Widget _createPopular(BuildContext context) {
   }
 
   Widget _createPopularView(BuildContext context, List<PostApiResponse> post) {
-    final contentHeight =MediaQuery.of(context).size.height;
+    final contentHeight =MediaQuery.of(context).size.height -200 ;
     return Column(
       children: [
         Container(
@@ -139,14 +143,6 @@ Widget _createPopular(BuildContext context) {
     );
   }
 
-  Widget _createPopularViewperfil(BuildContext context, PostApiResponse post) {
-    return Image(
-                      image: NetworkImage(post.imagen.replaceFirst('localhost', '10.0.2.2')),
-                      height: 45.0,
-                      width: 45.0,
-                    );
-
-  }
 
   Widget _createPopularViewItem(BuildContext context, PostApiResponse post) {
     final width = MediaQuery.of(context).size.width;
@@ -243,7 +239,23 @@ Widget _createPopular(BuildContext context) {
                   text: TextSpan(
                     children: [
                       TextSpan(
-                        text: "${post.username} ",
+                        text: "8000 Me gusta",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15.0
+                        )           
+                      ),
+                    ]
+                  ),
+                ),
+                RichText(                  
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: '${post.username} ',
                         style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
@@ -251,16 +263,23 @@ Widget _createPopular(BuildContext context) {
                         )           
                       ),
                       TextSpan(
-                        text: "${post.titulo} ",
+                        text: '${post.texto} ',
                         style: TextStyle(
-                          color: Colors.black                      
-                        )                  
+                          color: Colors.black,
+                          fontSize: 15.0
+                        )           
                       ),
                     ]
                   ),
                 ),
+                SizedBox(
+                  height:10
+                ),
+                Text('${post.titulo}' , style: TextStyle(color:Colors.blueAccent)),
+                
             
               ],
+              
             )
             
                       ),

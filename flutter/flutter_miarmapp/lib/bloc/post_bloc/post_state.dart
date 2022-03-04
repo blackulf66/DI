@@ -33,6 +33,7 @@ class PostErrorState extends BlocPostState {
 
 class PostFetched extends BlocPostState {
   final List<PostApiResponse> post;
+
   final String type;
 
   const PostFetched(this.post, this.type);

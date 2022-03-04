@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_miarmapp/models/Post_dto.dart';
 import 'package:flutter_miarmapp/models/postApi_model.dart';
+import 'package:flutter_miarmapp/models/userApi_model.dart';
 import 'package:flutter_miarmapp/repository/post_repository/postApi_repository.dart';
 import 'package:meta/meta.dart';
 
@@ -20,7 +21,8 @@ class PostBloc extends Bloc<BlocPostEvent, BlocPostState> {
 void _PostFetched(FetchPostWithType event, Emitter<BlocPostState> emit) async {
     try {
       final post = await public.fetchPosts(event.type);
-      emit(PostFetched(post, event.type));
+
+      emit(PostFetched(post ,event.type));
       return;
     } on Exception catch (e) {
       emit(PostFetchError(e.toString()));

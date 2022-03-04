@@ -5,23 +5,15 @@ import 'package:flutter_miarmapp/bloc/image_pick_bloc/image_pick_bloc_bloc.dart'
 import 'package:flutter_miarmapp/bloc/post_bloc/post_bloc.dart';
 import 'package:flutter_miarmapp/models/Post_dto.dart';
 import 'package:flutter_miarmapp/models/postApi_model.dart';
-import 'package:flutter_miarmapp/repository/auth_repository/auth_repository.dart';
-import 'package:flutter_miarmapp/repository/auth_repository/auth_repository_impl.dart';
 import 'package:flutter_miarmapp/repository/post_repository/postApi_repository.dart';
 import 'package:flutter_miarmapp/repository/post_repository/postApi_repository_impl.dart';
-import 'package:flutter_miarmapp/ui/screens/home_screen.dart';
+import 'package:flutter_miarmapp/ui/screens/home_screenv2.dart';
+import 'package:flutter_miarmapp/ui/screens/menu_screen.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:http/http.dart' as http;
-
-import 'package:date_field/date_field.dart';
-
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
-import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'menu_screen.dart';
 
 class PostForm extends StatefulWidget {
   const PostForm({Key? key}) : super(key: key);
@@ -47,8 +39,9 @@ class _postformScreenState extends State<PostForm> {
   late Future<SharedPreferences> _prefs;
   final String uploadUrl = 'http://10.0.2.2:8080/auth/register';
   String path = "";
+  List<String> visibilidad = ['PUBLICO', 'PRIVADO'];
+  String dropdownvalue = 'PUBLICO';
   bool _passwordVisible = false;
-  bool _isPublic= true;
 
   @override
   void initState() {
@@ -116,7 +109,7 @@ class _postformScreenState extends State<PostForm> {
     _prefs.then((SharedPreferences prefs) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const HomeScreen()),
+        MaterialPageRoute(builder: (context) => const MenuScreen()),
       );
     });
   }
@@ -167,7 +160,7 @@ class _postformScreenState extends State<PostForm> {
                           
                           controller: titulo,
                           decoration: InputDecoration(
-                            hintText: 'Titulo',
+                            hintText: 'coloca aqui tus #',
                             hintStyle: TextStyle(color: Colors.grey),
                             border: OutlineInputBorder(
                               borderSide: BorderSide.none,
@@ -204,18 +197,38 @@ class _postformScreenState extends State<PostForm> {
                       SizedBox(
                         height: 24,
                       ),
-                       Column(
-                        children: [
-                          Checkbox(
-                            value: _isPublic,
-                            onChanged: (value) {
-                              setState(() {
-                                _isPublic = value!;
-                              });
-                            }),
-                        const Text('marca si quieres que tu post sea publico'),
-                        ],
+                      Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 5, horizontal: 11),
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        border: Border.all(color: Colors.grey[400]!),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(4.0)),
                       ),
+                      child: DropdownButton(
+                        isExpanded: true,
+                        value: dropdownvalue,
+                        underline: Container(color: Colors.grey[200]),
+                        dropdownColor: Colors.grey[200],
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            dropdownvalue = newValue!;
+                          });
+                        },
+                        items: visibilidad
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        style: TextStyle(color: Colors.grey[700], fontSize: 16),
+                      ),
+                    ),
+                  ),
                   
                       BlocConsumer<ImagePickBlocBloc, ImagePickBlocState>(
                           listenWhen: (context, state) {
@@ -269,13 +282,13 @@ class _postformScreenState extends State<PostForm> {
                       final loginDto = PostDto(
                           titulo: titulo.text,
                           texto: texto.text,
-                          postEnum: _isPublic);
+                          postEnum: dropdownvalue);
                       BlocProvider.of<PostBloc>(context)
                           .add(DoPostEvent(loginDto, path));
                     }
                     prefs.setString('titulo', titulo.text);
                     prefs.setString('texto', texto.text);
-                    prefs.setBool('postEnum', _isPublic);
+                    prefs.setString('postEnum', dropdownvalue);
                   },
                   child: const Text('subir'),
                 ),

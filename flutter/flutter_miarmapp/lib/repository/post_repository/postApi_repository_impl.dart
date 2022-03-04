@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter_miarmapp/models/Post_dto.dart';
 import 'package:flutter_miarmapp/models/postApi_model.dart';
+import 'package:flutter_miarmapp/models/userApi_model.dart';
 import 'package:flutter_miarmapp/repository/post_repository/postApi_repository.dart';
 import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -38,7 +39,7 @@ class PostApiRepositoryImpl extends PostApiRepository {
                     var request = http.MultipartRequest('POST', uri);
                     request.fields['titulo'] = postdto.titulo;
                     request.fields['texto'] = postdto.texto;
-                    request.fields['postEnum'] = postdto.postEnum.toString();
+                    request.fields['postEnum'] = postdto.postEnum;
                     request.files.add(await http.MultipartFile.fromPath('file', imagePath));
                     request.headers.addAll(headers);
                     var response = await request.send();
