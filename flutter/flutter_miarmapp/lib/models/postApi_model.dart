@@ -6,6 +6,8 @@ class PostApiResponse {
     required this.imagen,
     required this.postEnum,
     required this.username,
+    required this.userImage,
+
   });
   late final int id;
   late final String titulo;
@@ -13,6 +15,8 @@ class PostApiResponse {
   late final String imagen;
   late final String postEnum;
   late final String username;
+  late final String userImage;
+
   
   PostApiResponse.fromJson(Map<String, dynamic> json){
     id = json['id'];
@@ -21,6 +25,8 @@ class PostApiResponse {
     imagen = json['imagen'];
     postEnum = json['postEnum'];
     username = json['username'];
+    userImage = json['userImage'];
+
   }
 
   Map<String, dynamic> toJson() {
@@ -30,6 +36,7 @@ class PostApiResponse {
     _data['texto'] = texto;
     _data['imagen'] = imagen;
     _data['postEnum'] = postEnum;
+    _data['userImage'] = userImage;
     _data['username'] = username;
     return _data;
   }

@@ -43,7 +43,6 @@ class _Homev2ScreenState extends State<Homev2Screen> {
       child: Scaffold(
       backgroundColor: Color(0xFFF9F9F9),  
       appBar:AppBar(
-      
       backgroundColor: Color(0xFFF9F9F9),  
       title: Padding(
         padding: const EdgeInsets.only(right:10.0),
@@ -64,11 +63,11 @@ class _Homev2ScreenState extends State<Homev2Screen> {
                   }, icon: Icon(Icons.add_box_outlined,color: Colors.black ,size: 28.0 )),
         IconButton(
           onPressed: (){},
-          icon: Icon( Icons.tv , color: Colors.black ,size: 28.0 ),
+          icon: Icon( Icons.favorite_outline_outlined , color: Colors.black ,size: 28.0 ),
         ),
         IconButton(
           onPressed: (){},
-          icon: Icon( Icons.ac_unit, color: Colors.black, size: 28.0  ),
+          icon: Icon( Icons.send_outlined, color: Colors.black, size: 28.0  ),
         ),
       ],
     ),
@@ -160,7 +159,7 @@ Widget _createPopular(BuildContext context) {
                   child: ClipRRect(
                     borderRadius:BorderRadius.circular(50.0),
                     child: Image(
-                      image: NetworkImage(post.imagen.replaceFirst('localhost', '10.0.2.2')),
+                      image: NetworkImage(post.userImage.replaceFirst('localhost', '10.0.2.2')),
                       height: 45.0,
                       width: 45.0,
                     ),

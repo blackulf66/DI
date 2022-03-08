@@ -73,6 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
       prefs.setString('token', late.token);
       prefs.setString('avatar', late.avatar);
       prefs.setString('nick' , late.nick);
+
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const MenuScreen()),
